@@ -1,48 +1,50 @@
 <?php
-    session_start();
+	session_start();
 
-    require_once('../models/UserModel.php');
+	require_once('../models/UserModel.php');
 
-    if(isset($_POST['submit'])){
+	if(isset($_POST['submit'])){
 
-        $user_id = $_REQUEST['user_id'];
-        $password = $_REQUEST['password'];
-        //$type = $_REQUEST['type'];
+		$username = $_REQUEST['username'];
+		$password = $_REQUEST['password'];
+		//$type = $_REQUEST['type'];
 
-        $status = validateUser($user_id, $password);
-//        var_dump($status);
-        if($status){
+		$status = validateUser($username, $password);
 
-            if(!empty($_REQUEST['remember'])){
-                setcookie('user_id', $user_id, time()+(86400*30));
-                setcookie('password', $password, time()+(86400*30)); // 1 day = 86400
-            }else{
-                if(isset($_COOKIE['user_id'])){
-                    setcookie('user_id','');
-                }
-                if(isset($_COOKIE['password'])){
-                    setcookie('password','');
-                }
-            }
+		if($status){
 
-            $_SESSION['flag'] = true;
+			if(!empty($_REQUEST['remember'])){
+//				setcookie('username', $username, time()+(86400*30));
+                setrawcookie('username', $username, time() + (86400 * 30), "/");
+                setrawcookie('password', $password, time()+(86400*30)); // 1 day = 86400
+			}else{
+				if(isset($_COOKIE['username'])){
+                    setrawcookie('username','');
+				}
+				if(isset($_COOKIE['password'])){
+                    setrawcookie('password','');
+				}
+			}
+			
+			$_SESSION['flag'] = true;
 
-            $data = getUserById($user_id);
-            $_SESSION['current_user']=$data;
+			$data = getUserById($username);
+			$_SESSION['current_user']=$data;
 
-            echo "success";
+			echo "success";
 
-    //=====================================================================================
-            /*$_SESSION['user_type']=$user; //global declaration database
-
-            if($user['user']=="Admin"){
-                header('location: ../view/admin_home.php');
-            }else{
-                header('location: ../view/user_home.php');
-            }*/
-    //=====================================================================================
-        }else{
-            echo "Invalid users credential don't match !";
-        }
-    }
+//=====================================================================================
+			/*$_SESSION['user_type']=$user; //global declaration database
+	
+			if($user['user']=="Admin"){
+				header('location: ../view/admin_home.php');
+			}else{
+				header('location: ../view/user_home.php');
+			}*/
+//=====================================================================================
+		}else{
+			
+			echo "Invalid User";
+		}
+	}
 ?>
