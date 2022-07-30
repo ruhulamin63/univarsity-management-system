@@ -1,8 +1,8 @@
 
 function regCheckValidation(){
 
-    var student_id = document.getElementById('student_id').value;
-    var name = document.getElementById('name').value;
+    var user_id = document.getElementById('user_id').value;
+    var full_name = document.getElementById('full_name').value;
     var password = document.getElementById('password').value;
     var confpass = document.getElementById('confpass').value;
     var phone = document.getElementById('phone').value;
@@ -28,26 +28,27 @@ function regCheckValidation(){
 
 
 //===========================Username validation======================================
+//     console.log(user_id);
 
-    if(student_id==''){
-        document.getElementById('u_id').innerHTML = "* Please required student id ?";
-    }else if(isNaN(student_id)){
+    if(user_id==''){
+        document.getElementById('u_id').innerHTML = "* Please required user id ?";
+    }else if(isNaN(user_id)){
         document.getElementById('u_id').innerHTML = "* Must be integer type ?";
-    }else if(student_id.length<4 || student_id.length>15){
-        document.getElementById('u_id').innerHTML = "* Student id must be between 4 to 11 ?";
+    }else if(user_id.length<4 || user_id.length>15){
+        document.getElementById('u_id').innerHTML = "* User id must be between 4 to 11 ?";
     }else{
         document.getElementById('u_id').innerHTML="";
     }
 
 
 //=============================Name Validation=======================================
-    if(name==''){
+    if(full_name==''){
         document.getElementById('n').innerHTML = "* Please fill the name field ?";
-    }else if(name.length<4 || name.length>20){
+    }else if(full_name.length<4 || full_name.length>20){
         document.getElementById('n').innerHTML = "* At least 4 to 20 characters ?";
-    }else if(!isNaN(name)){
+    }else if(!isNaN(full_name)){
         document.getElementById('n').innerHTML = "* Only characters are allowed ?";
-    }else if(!(name[0]>='A'&&name[0]<='Z') ){
+    }else if(!(full_name[0]>='A'&&full_name[0]<='Z') ){
         document.getElementById('n').innerHTML = "* First letter must be capital ?";
     }else{
         document.getElementById('n').innerHTML="";
@@ -99,7 +100,7 @@ function regCheckValidation(){
     if(address==""){
         document.getElementById('a').innerHTML = "* Please fill the address field ?";
     }else{
-
+        document.getElementById('a').innerHTML="";
     }
 
 //==================================Gender Validation==========================================
@@ -156,22 +157,25 @@ function regCheckValidation(){
     xhttp.onreadystatechange = function(){
 
         if(this.readyState == 4 && this.status == 200){
-            //document.getElementById('txtHint').innerHTML=this.responseText;
+            document.getElementById('txtHint').innerHTML=this.responseText;
 
             if(this.responseText == "success"){
-                location="../controler/login_check.php";
+                // console.log('test');
+
+                location="../views/login_check.php";
             }else{
-                if(this.responseText == "missingInfo"){
+                // console.log('fail');
+                if(this.responseText == "fail"){
+                    // console.log('f');
                     var result = this.responseText;
                     document.getElementById('txtHint').innerHTML=result.fontcolor('red');
                 }
             }
         }
     }
-    xhttp.send('username='+username+'&name='+name+'&password='+password+'&confpass='+confpass+
-        '&phone='+phone+'&email='+email+'&address='+address+'&gender='+gender+'&department='+department+
-        '&blood='+blood+'&dob='+dob+'&usertype='+usertype+'&submit='+submit);
-
+    xhttp.send('user_id='+user_id+'&full_name='+full_name+'&password='+password+'&phone='+phone+'&email='+email+'&address='+address+'&gender='+gender+'&program='+program+
+        '&blood='+blood+'&dob='+dob+'&submit='+submit);
+    // console.log('test');
 //=====================================================================================
 
 }

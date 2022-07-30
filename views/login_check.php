@@ -46,7 +46,7 @@
                                             </tr>
 
                                             <tr>
-                                                <td>Username</td>
+                                                <td>User Id</td>
                                                 <td>
                                                     <input type="text" name="user_id" id="user_id" placeholder="user id" value="<?php if(isset($_COOKIE['user_id'])){ echo $_COOKIE['user_id'];} ?>">
                                                 </td>
@@ -70,7 +70,7 @@
                                             </tr>
 
                                             <tr>
-                                                <td><input type="checkbox" id="remember" name="remember"  <?php if (isset($_COOKIE['username'])){ echo "checked";} ?>> Remember Me</td>
+                                                <td><input type="checkbox" id="remember" name="remember"  <?php if (isset($_COOKIE['user_id'])){ echo "checked";} ?>> Remember Me</td>
                                             </tr>
                                             <tr align="center">
                                                 <td colspan="2">

@@ -48,9 +48,9 @@ include('../views/header.html');
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Student ID</td>
+                                    <td>User ID</td>
                                     <td>
-                                        <input type="text" name="student_id" id="student_id" value="">
+                                        <input type="text" name="user_id" id="user_id" value="">
                                     </td>
                                 </tr>
                                 <tr>
@@ -60,9 +60,9 @@ include('../views/header.html');
                                 </tr>
 
                                 <tr>
-                                    <td>Name</td>
+                                    <td>Full Name</td>
                                     <td>
-                                        <input type="text" name="name" id="name" value="">
+                                        <input type="text" name="full_name" id="full_name" value="">
                                     </td>
                                 </tr>
                                 <tr>
@@ -74,7 +74,7 @@ include('../views/header.html');
                                 <tr>
                                     <td>Password</td>
                                     <td>
-                                        <input type="text" name="password" id="password" value="">
+                                        <input type="password" name="password" id="password" value="">
                                     </td>
                                 </tr>
                                 <tr>
@@ -86,7 +86,7 @@ include('../views/header.html');
                                 <tr>
                                     <td>Confirm Password</td>
                                     <td>
-                                        <input type="text" name="confpass" id="confpass" value="">
+                                        <input type="password" name="confpass" id="confpass" value="">
                                     </td>
                                 </tr>
                                 <tr>
@@ -122,7 +122,7 @@ include('../views/header.html');
                                 <tr>
                                     <td>Address</td>
                                     <td>
-                                        <textarea cols="22" name="address" id="address"></textarea>
+                                        <textarea cols="20" name="address" id="address"></textarea>
                                     </td>
                                 </tr>
                                 <tr>
@@ -150,9 +150,9 @@ include('../views/header.html');
                                     <td>
                                         <select name="program" id="program">
                                             <option value="">-Select-</option>
-                                            <option value="CSE">Bsc in CSE</option>
-                                            <option value="EEE">Bsc in EEE</option>
-                                            <option value="ENG">Bsc in ENG</option>
+                                            <option value="Bsc in CSE">Bsc in CSE</option>
+                                            <option value="Bsc in EEE">Bsc in EEE</option>
+                                            <option value="Bsc in ENG">Bsc in ENG</option>
                                             <option value="BBA">BBA</option>
                                         </select>
                                     </td>
@@ -201,7 +201,7 @@ include('../views/header.html');
                                     <td colspan="2">
                                         <hr><br>
                                         <input type="submit" name="submit" id="submit" value="Sign Up" onclick="regCheckValidation()"><br><br>
-                                        <span>Already SignUp ?</span><a href="login_check.php">Login</a>
+                                        <span>Already SignUp ?</span>&nbsp;&nbsp;<a href="login_check.php">Login</a>
                                     </td>
                                     <!-- <td align="right">
                                         <a href="login_check.php">Back</a>

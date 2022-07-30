@@ -6,16 +6,14 @@ function loginCheckValidation(){
     const remember = document.getElementById('remember').checked;
     const submit = document.getElementById('submit').value;
 
-    if(user_id==""){
+    if(user_id==''){
         document.getElementById('user').innerHTML = "* Please required user id ?";
-        return false;
     }else{
         document.getElementById('user').innerHTML = "";
     }
 
-    if(password==""){
+    if(password==''){
         document.getElementById('pass').innerHTML = "* Please required password ?";
-        return false;
     }else{
         document.getElementById('pass').innerHTML = "";
     }
@@ -30,16 +28,15 @@ function loginCheckValidation(){
         if(this.readyState == 4 && this.status == 200){
 
             if(this.responseText == "success"){
-                location="../views/dashboard.php";
+                location="../views/students/dashboard.php";
 
             }else{
-                if (this.responseText == "Invalid User"){
-                    var resutl = this.responseText;
-                    document.getElementById('txtHint').innerHTML =resutl.fontcolor('red');
-                }
+                this.responseText == "Invalid users credential don't match !";
+                var resutl = this.responseText;
+                document.getElementById('txtHint').innerHTML =resutl.fontcolor('red');
+
             }
         }
     }
-    xhttp.send('username='+username+'&password='+password+'&remember='+remember+'&submit='+submit);
-
+    xhttp.send('user_id='+user_id+'&password='+password+'&remember='+remember+'&submit='+submit);
 }
