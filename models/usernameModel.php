@@ -1,14 +1,14 @@
 <?php
-	
-	require_once('../models/db.php');
 
-	function UserNameQuery($username){
+require_once('../models/db.php');
 
-		$conn = getConnection();
-		$sql = "select * from registration where username='{$username}'";
-		$result = mysqli_query($conn, $sql);
-		$row = mysqli_num_rows($result);
+function UserNameQuery($username){
 
-		return $row;
-	}
+    $conn = getConnection();
+    $sql = "select * from registration where username='{$username}'";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_num_rows($result);
+
+    return $row;
+}
 ?>
