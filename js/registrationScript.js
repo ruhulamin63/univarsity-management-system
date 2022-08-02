@@ -151,7 +151,7 @@ function regCheckValidation(){
     xhttp.onreadystatechange = function(){
 
         if(this.readyState == 4 && this.status == 200){
-            document.getElementById('txtHint').innerHTML=this.responseText;
+            // document.getElementById('txtHint').innerHTML=this.responseText;
 
             if(this.responseText == "success"){
                 // console.log('test');
@@ -162,9 +162,9 @@ function regCheckValidation(){
                 // if(this.responseText == "fail"){
                 //     console.log('f');
                     var result = this.responseText;
-                    document.getElementById('txtHint').innerHTML=result.fontcolor('red');
                 // }
             }
+            document.getElementById('txtHint').innerHTML=result.fontcolor('red');
         }
     }
     xhttp.send('&username='+username+'&full_name='+full_name+'&password='+password+'&email='+email+'&phone='+phone+

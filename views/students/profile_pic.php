@@ -15,20 +15,20 @@
             //echo $file_info['tmp_name'];
 
             $file = $file_info['name'];
-            $path = '../asset/upload/'.$file;
+            $path = '../../asset/upload/'.$file;
             $filename = $file_info['tmp_name'];
 
             if(move_uploaded_file($filename, $path)){
 
-                $insert=[
-                    'username'=>$username,
-                    'photos'=>$path
-
-                ];
+//                $insert=[
+//                    'username'=>$username,
+//                    'photos'=>$path
+//
+//                ];
 
                 require_once('../../models/imageModel.php');
 
-                $result = insertImage($insert);
+                $result = insertImage($path, $username);
 
                 if($result){
                     ?>
@@ -36,6 +36,7 @@
                         alert('Inserted image in database.');
                     </script>
                     <?php
+                    header('location: view_student_profile.php');
 
                 }else{
                     ?>
@@ -52,7 +53,6 @@
                 </script>
                 <?php
             }
-            header('location: view_profile_check.php');
         }
     }
 ?>
@@ -77,7 +77,7 @@
                             Logged in as
                             <a href="view_student_profile.php">
                                 <?php
-                                echo $_SESSION['current_user']['name'];
+                                echo $_SESSION['current_user']['full_name'];
                                 ?>
                             </a> |
                             <a href="../../controllers/logout_check.php"> Logout </a>
@@ -94,11 +94,9 @@
                 <hr>
 
                 <details>
-                    <summary><b>Dashboard</b></summary>
-                    <details>
-                        <summary><a href="dashboard.php">Dashboard</a></summary>
-                    </details>
+                    <summary><a href="dashboard.php">Dashboard</a></summary>
                 </details>
+
 
 <!--                <details>-->
 <!--                    <summary><b>Portal</b></summary>-->
@@ -154,10 +152,10 @@
                         <summary><a href="view_student_profile.php">View Profile</a></summary>
                     </details>
                     <details>
-                        <summary><a href="../controler/edit_profile_check.php">Edit Profile</a></summary>
+                        <summary><a href="edit_student_profile.php">Edit Profile</a></summary>
                     </details>
                     <details>
-                        <summary><a href="../controler/change_pass_check.php">Change Password</a></summary>
+                        <summary><a href="change_student_password.php">Change Password</a></summary>
                     </details>
                     <details>
                         <summary><a href="../../controllers/logout_check.php">Logout</a></summary>

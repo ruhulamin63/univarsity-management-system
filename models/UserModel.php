@@ -62,19 +62,19 @@ function insertUser($user){
 
 //======================================================================================
 
-function updateUser($user,$username){
-
-    $conn = getConnection();
-    $sql = "update users set username='{$user['username']}', name='{$user['full_name']}', email='{$user['email']}', phone='{$user['phone']}', program='{$user['program']}', dob='{$user['dob']}', where username='{$username}'";
-
-//    var_dump($sql);
-
-    if(mysqli_query($conn, $sql)){
-        return true;
-    }else{
-        return false;
-    }
-}
+//function updateUser($user,$username){
+//
+//    $conn = getConnection();
+//    $sql = "update users set username='{$user['username']}', name='{$user['full_name']}', email='{$user['email']}', phone='{$user['phone']}', program='{$user['program']}', dob='{$user['dob']}', where username='{$username}'";
+//
+////    var_dump($sql);
+//
+//    if(mysqli_query($conn, $sql)){
+//        return true;
+//    }else{
+//        return false;
+//    }
+//}
 
 //======================================================================================
 

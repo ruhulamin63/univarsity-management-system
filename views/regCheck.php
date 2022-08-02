@@ -119,32 +119,6 @@ include('../views/header.html');
                                     </td>
                                 </tr>
 
-<!--                                <tr>-->
-<!--                                    <td>Address</td>-->
-<!--                                    <td>-->
-<!--                                        <textarea cols="20" name="address" id="address"></textarea>-->
-<!--                                    </td>-->
-<!--                                </tr>-->
-<!--                                <tr>-->
-<!--                                    <td colspan="2">-->
-<!--                                        <span id="a" class="user-error"></span>-->
-<!--                                    </td>-->
-<!--                                </tr>-->
-
-<!--                                <tr>-->
-<!--                                    <td>Gender</td>-->
-<!--                                    <td>-->
-<!--                                        <input type="radio"  id="gender" value="Male">Male-->
-<!--                                        <input type="radio"  id="gender" value="Female">Female-->
-<!--                                        <input type="radio"  id="gender" value="Others">Others-->
-<!--                                    </td>-->
-<!--                                </tr>-->
-<!--                                <tr>-->
-<!--                                    <td colspan="2">-->
-<!--                                        <span id="g" class="user-error"></span>-->
-<!--                                    </td>-->
-<!--                                </tr>-->
-
                                 <tr>
                                     <td>Program</td>
                                     <td>
@@ -162,28 +136,6 @@ include('../views/header.html');
                                         <span id="pro" class="user-error"></span>
                                     </td>
                                 </tr>
-
-<!--                                <tr>-->
-<!--                                    <td>Blood Group</td>-->
-<!--                                    <td>-->
-<!--                                        <select name="blood" id="blood">-->
-<!--                                            <option value="">-Select-</option>-->
-<!--                                            <option value="A+">A+</option>-->
-<!--                                            <option value="B+">B+</option>-->
-<!--                                            <option value="AB+">AB+</option>-->
-<!--                                            <option value="O+">O+</option>-->
-<!--                                            <option value="A-">A-</option>-->
-<!--                                            <option value="B-">B-</option>-->
-<!--                                            <option value="AB-">AB-</option>-->
-<!--                                            <option value="O-">O-</option>-->
-<!--                                        </select>-->
-<!--                                    </td>-->
-<!--                                </tr>-->
-<!--                                <tr>-->
-<!--                                    <td colspan="2">-->
-<!--                                        <span id="bg" class="user-error"></span>-->
-<!--                                    </td>-->
-<!--                                </tr>-->
 
                                 <tr>
                                     <td>Date of Birth</td>

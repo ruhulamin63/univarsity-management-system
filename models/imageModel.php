@@ -7,7 +7,7 @@ require_once('db.php');
 function getImageById($username){
 
     $conn = getConnection();
-    $sql = "select * from user_image where username='{$username}'";
+    $sql = "select * from users where username='{$username}'";
     $result = mysqli_query($conn, $sql);
 
     return $result;
@@ -18,7 +18,7 @@ function getImageById($username){
 function getAllImage(){
 
     $conn = getConnection();
-    $sql = "select * from user_image";
+    $sql = "select * from users";
     $result = mysqli_query($conn, $sql);
     $users =[];
 
@@ -30,10 +30,13 @@ function getAllImage(){
 
 //======================================================================================
 
-function insertImage($user){
+function insertImage($user,$username){
 
     $conn = getConnection();
-    $sql = "insert into user_image values('', '{$user['username']}', '{$user['photos']}')";
+//    $sql = "insert into users values('', '{$user['username']}', '{$user['photos']}')";
+    $sql = "update users set image='{$user}' where username='{$username}'";
+
+    var_dump($sql);
 
     if(mysqli_query($conn, $sql)){
         return true;

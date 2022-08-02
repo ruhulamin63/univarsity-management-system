@@ -5,9 +5,7 @@ function imageValidation(){
 
     if(img.value==""){
         alert('No Image Select');
-        return false;
     }else{
-
         var pos_of_dot = img.value.lastIndexOf('.')+1;
         var img_ext = img.value.substring(pos_of_dot);
 

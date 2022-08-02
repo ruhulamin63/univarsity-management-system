@@ -46,10 +46,7 @@ include('student_head.html');
             <hr>
 
             <details>
-                <summary><b>Dashboard</b></summary>
-                <details>
-                    <summary><a href="dashboard.php">Dashboard</a></summary>
-                </details>
+                <summary><a href="dashboard.php">Dashboard</a></summary>
             </details>
 
 <!--            <details>-->
@@ -106,10 +103,10 @@ include('student_head.html');
                     <summary><a href="view_student_profile.php">View Profile</a></summary>
                 </details>
                 <details>
-                    <summary><a href="../controler/edit_profile_check.php">Edit Profile</a></summary>
+                    <summary><a href="edit_student_profile.php">Edit Profile</a></summary>
                 </details>
                 <details>
-                    <summary><a href="../controler/change_pass_check.php">Change Password</a></summary>
+                    <summary><a href="change_student_password.php">Change Password</a></summary>
                 </details>
                 <details>
                     <summary><a href="../../controllers/logout_check.php">Logout</a></summary>
@@ -119,7 +116,7 @@ include('student_head.html');
 
 
         <td colspan="2" align="center">
-            <h1>Welcome to our (UMS) project, <?php echo $data['full_name'];?>
+            <h1>Welcome to our student, <?php echo $data['full_name'];?>
             </h1>
         </td>
     </tr>

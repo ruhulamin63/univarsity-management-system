@@ -16,14 +16,14 @@
             if($status){
 
                 if(!empty($_REQUEST['remember'])){
-                    setrawcookie('username', $username, time()+(86400*30));
-                    setrawcookie('password', $password, time()+(86400*30)); // 1 day = 86400
+                    setcookie('username', $username, time()+(86400*30), "/");
+                    setcookie('password', $password, time()+(86400*30), "/"); // 1 day = 86400
                 }else{
                     if(isset($_COOKIE['username'])){
-                        setrawcookie('username','');
+                        setcookie('username');
                     }
                     if(isset($_COOKIE['password'])){
-                        setrawcookie('password','');
+                        setcookie('password');
                     }
                 }
 
@@ -32,17 +32,21 @@
                 $data = getUserById($username);
                 $_SESSION['current_user']=$data;
 
-                echo "success";
+                //=====================================================================================
+                $_SESSION['user_type']=$data; //global declaration database\
+//                var_dump($data);
 
-        //=====================================================================================
-                /*$_SESSION['user_type']=$user; //global declaration database
+                if($data['user_type']=="student"){
+                    echo "student";
+//                    header('location: ../views/students/dashboard.php');
 
-                if($user['user']=="Admin"){
-                    header('location: ../view/admin_home.php');
-                }else{
-                    header('location: ../view/user_home.php');
-                }*/
-        //=====================================================================================
+                }if($data['user_type']=="staff"){
+                    echo "staff";
+//                    header('location: ../views/staffs/staff_dashboard.php');
+
+                }
+                //=====================================================================================
+
             }else{
                 echo "Users credential don't match !";
             }
