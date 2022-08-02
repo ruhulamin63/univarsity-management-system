@@ -6,7 +6,7 @@ require_once('db.php');
 function validateUser($username, $password){
 
     $conn = getConnection();
-    $sql = "select * from registration where username='{$username}' and password='{$password}'";
+    $sql = "select * from users where username='{$username}' and password='{$password}'";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
 
@@ -23,6 +23,7 @@ function getUserById($username){
 
     $conn = getConnection();
     $sql = "select * from users where username='{$username}'";
+
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
 
@@ -49,8 +50,9 @@ function getAllUser(){
 function insertUser($user){
 
     $conn = getConnection();
-    $sql = "insert into registration values('', '{$user['username']}', '{$user['full_name']}', '{$user['password']}', '{$user['email']}', '{$user['phone']}', '{$user['program']}', '{$user['dob']}', '{$user['user_type']}')";
+    $sql = "insert into users values('', '{$user['username']}', '{$user['full_name']}', '{$user['password']}', '{$user['email']}', '{$user['phone']}', '{$user['program']}', '{$user['dob']}', '{$user['user_type']}', '')";
 
+//    var_dump(mysqli_query($conn, $sql));
     if(mysqli_query($conn, $sql)){
         return true;
     }else{
@@ -63,7 +65,9 @@ function insertUser($user){
 function updateUser($user,$username){
 
     $conn = getConnection();
-    $sql = "update registration set username='{$user['username']}', name='{$user['name']}', email='{$user['email']}', phone='{$user['phone']}', address='{$user['address']}', gender='{$user['gender']}', department='{$user['department']}', blood='{$user['blood']}', dob='{$user['dob']}', '{$user['usertype']}' where username='{$username}'";
+    $sql = "update users set username='{$user['username']}', name='{$user['full_name']}', email='{$user['email']}', phone='{$user['phone']}', program='{$user['program']}', dob='{$user['dob']}', where username='{$username}'";
+
+//    var_dump($sql);
 
     if(mysqli_query($conn, $sql)){
         return true;
@@ -77,7 +81,7 @@ function updateUser($user,$username){
 function deleteUser($id){
 
     $conn = getConnection();
-    $sql = "delete from registration where id={$id}";
+    $sql = "delete from users where id={$id}";
 
     if(mysqli_query($conn, $sql)){
         return true;

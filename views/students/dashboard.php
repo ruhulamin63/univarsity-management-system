@@ -2,10 +2,11 @@
 session_start();
 
 if(!isset($_SESSION['flag'])){
-    header('location: ../controllers/login_check.php');
+    header('location: ../../controllers/login_check.php');
 }
 
 $data=$_SESSION['current_user'];
+//var_dump($data);
 ?>
 
     <!-- ============================================================ -->
@@ -26,7 +27,7 @@ include('student_head.html');
                             <img src="../../asset/company_logo.png" alt="main_logo" width="100%" height="100%">
                         </td>
                         <td align="right" >Logged in as
-                            <a href="../../controllers/view_profile_check.php">
+                            <a href="view_student_profile.php">
                                 <?php
                                 echo $data['full_name'];
                                 ?>
@@ -51,58 +52,58 @@ include('student_head.html');
                 </details>
             </details>
 
-            <details>
-                <summary><b>Portal</b></summary>
-                <details>
-                    <summary><a href="create_leave_request.php">Create Leave Request</a></summary>
-                </details>
-                <details>
-                    <summary><a href="create_travel_request.php">Create Travel Request</a></summary>
-                </details>
-                <details>
-                    <summary><a href="fixing_interview_approval.php">Fixing Interview</a></summary>
-                </details>
-            </details>
-
-            <details>
-                <summary><b>Screening & Approval</b></summary>
-                <details>
-                    <summary><a href="leave_approval.php">Leave Approval</a></summary>
-                </details>
-                <details>
-                    <summary><a href="travel_approval.php">Travel Approval</a></summary>
-                </details>
-                <details>
-                    <summary><a href="performance_approval.php">Performance Overview</a></summary>
-                </details>
-            </details>
-
-            <details>
-                <summary><b>Requirement</b></summary>
-                <details>
-                    <summary><a href="add_job.php">Add Job Titles</a></summary>
-                </details>
-                <details>
-                    <summary><a href="view_job.php">View Job Titles</a></summary>
-                </details>
-                <details>
-                    <summary><a href="add_job_vacancy.php">Add Job Vacancy</a></summary>
-                </details>
-                <details>
-                    <summary><a href="view_job_vacancy.php">View Job Vacancy</a></summary>
-                </details>
-                <details>
-                    <summary><a href="online_app.php">Online Application</a></summary>
-                </details>
-                <details>
-                    <summary><a href="fixing_interview.php">Fixing Interview Online</a></summary>
-                </details>
-            </details>
+<!--            <details>-->
+<!--                <summary><b>Portal</b></summary>-->
+<!--                <details>-->
+<!--                    <summary><a href="create_leave_request.php">Create Leave Request</a></summary>-->
+<!--                </details>-->
+<!--                <details>-->
+<!--                    <summary><a href="create_travel_request.php">Create Travel Request</a></summary>-->
+<!--                </details>-->
+<!--                <details>-->
+<!--                    <summary><a href="fixing_interview_approval.php">Fixing Interview</a></summary>-->
+<!--                </details>-->
+<!--            </details>-->
+<!---->
+<!--            <details>-->
+<!--                <summary><b>Screening & Approval</b></summary>-->
+<!--                <details>-->
+<!--                    <summary><a href="leave_approval.php">Leave Approval</a></summary>-->
+<!--                </details>-->
+<!--                <details>-->
+<!--                    <summary><a href="travel_approval.php">Travel Approval</a></summary>-->
+<!--                </details>-->
+<!--                <details>-->
+<!--                    <summary><a href="performance_approval.php">Performance Overview</a></summary>-->
+<!--                </details>-->
+<!--            </details>-->
+<!---->
+<!--            <details>-->
+<!--                <summary><b>Requirement</b></summary>-->
+<!--                <details>-->
+<!--                    <summary><a href="add_job.php">Add Job Titles</a></summary>-->
+<!--                </details>-->
+<!--                <details>-->
+<!--                    <summary><a href="view_job.php">View Job Titles</a></summary>-->
+<!--                </details>-->
+<!--                <details>-->
+<!--                    <summary><a href="add_job_vacancy.php">Add Job Vacancy</a></summary>-->
+<!--                </details>-->
+<!--                <details>-->
+<!--                    <summary><a href="view_job_vacancy.php">View Job Vacancy</a></summary>-->
+<!--                </details>-->
+<!--                <details>-->
+<!--                    <summary><a href="online_app.php">Online Application</a></summary>-->
+<!--                </details>-->
+<!--                <details>-->
+<!--                    <summary><a href="fixing_interview.php">Fixing Interview Online</a></summary>-->
+<!--                </details>-->
+<!--            </details>-->
 
             <details>
                 <summary><b>Setting</b></summary>
                 <details>
-                    <summary><a href="../controler/view_profile_check.php">View Profile</a></summary>
+                    <summary><a href="view_student_profile.php">View Profile</a></summary>
                 </details>
                 <details>
                     <summary><a href="../controler/edit_profile_check.php">Edit Profile</a></summary>
@@ -111,7 +112,7 @@ include('student_head.html');
                     <summary><a href="../controler/change_pass_check.php">Change Password</a></summary>
                 </details>
                 <details>
-                    <summary><a href="../controler/logout_check.php">Logout</a></summary>
+                    <summary><a href="../../controllers/logout_check.php">Logout</a></summary>
                 </details>
             </details>
         </td>

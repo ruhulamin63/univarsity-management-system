@@ -32,10 +32,12 @@ function regCheckValidation(){
 
     if(username==''){
         document.getElementById('un').innerHTML = "* Please required user id ?";
-    }else if(isNaN(username)){
-        document.getElementById('un').innerHTML = "* Must be integer type ?";
-    }else if(username.length<4 || username.length>15){
-        document.getElementById('un').innerHTML = "* User id must be between 4 to 11 ?";
+    }
+    // else if(isNaN(username)){
+    //     document.getElementById('un').innerHTML = "* Must be integer type ?";
+    // }
+    else if(username.length<4 || username.length>15){
+        document.getElementById('un').innerHTML = "* User name must be between 4 to 11 ?";
     }else {
         document.getElementById('un').innerHTML="";
     }
@@ -158,7 +160,7 @@ function regCheckValidation(){
             }else{
                 // console.log('fail');
                 // if(this.responseText == "fail"){
-                    // console.log('f');
+                //     console.log('f');
                     var result = this.responseText;
                     document.getElementById('txtHint').innerHTML=result.fontcolor('red');
                 // }

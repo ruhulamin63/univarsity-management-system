@@ -30,9 +30,10 @@ function loginCheckValidation(){
             if(this.responseText == "success"){
                 location="../views/students/dashboard.php";
 
-            }else{
-                // this.responseText == "Invalid users credential don't match !";
+            }else {
+                // if(this.responseText == "Invalid users credential don't match !") {
                 var resutl = this.responseText;
+            // }
                 document.getElementById('txtHint').innerHTML =resutl.fontcolor('red');
             }
         }
