@@ -15,17 +15,6 @@ function regCheckValidation(){
     // var usertype = document.getElementById('usertype').value;
     var submit = document.getElementById('submit').value;
 
-    /*	console.log(confpass);
-        console.log(phone);
-        console.log(email);
-        console.log(address);
-        console.log(gender);
-        console.log(blood);
-        console.log(dob);
-        console.log(department);
-        console.log(usertype);*/
-
-
 
 //===========================Username validation======================================
 //     console.log(user_id);

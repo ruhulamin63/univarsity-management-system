@@ -1,55 +1,56 @@
 <?php
 
-session_start();
-require_once('../../models/UserModel.php');
-//require_once('../../models/db.php');
+    session_start();
+    require_once('../../models/UserModel.php');
+    //require_once('../../models/db.php');
 
-if(!isset($_SESSION['flag'])){
-    header('location: login_check.php');
-}
-
-//=============================================================================
-
-$user=$_SESSION['current_user'];
-//print_r($user);
-
-if(isset($_POST['change_pass_btn'])){
-
-    $curr_pass = $_POST['curr_pass'];
-    $new_pass = $_POST['new_pass'];
-    $re_pass = $_POST['re_pass'];
-
-//=========================================================================================
-
-    if($user['password']==$curr_pass){
-        if($new_pass==$re_pass){
-
-            $conn=getConnection();
-            $sql="update users set password='{$new_pass}' where username='{$user['username']}'";
-            $result=mysqli_query($conn, $sql);
-
-            if($result){
-                ?>
-                <script type="text/javascript">
-                    alert('Successfully change password');
-                </script>
-                <?php
-            }else{
-                ?>
-                <script type="text/javascript">
-                    alert('Invalid change password');
-                </script>
-                <?php
-            }
-        }
-    }else{
-        ?>
-        <script type="text/javascript">
-            alert('Current password mismatch !');
-        </script>
-        <?php
+    if(!isset($_SESSION['flag'])){
+        header('location: login_check.php');
     }
-}
+
+    //=============================================================================
+
+    $username=$_SESSION['current_user'];
+    $user = getUserById($username['username']);
+    //print_r($user);
+
+    if(isset($_POST['change_pass_btn'])){
+
+        $curr_pass = $_POST['curr_pass'];
+        $new_pass = $_POST['new_pass'];
+        $re_pass = $_POST['re_pass'];
+
+    //=========================================================================================
+
+        if($user['password']==$curr_pass){
+            if($new_pass==$re_pass){
+
+                $conn=getConnection();
+                $sql="update users set password='{$new_pass}' where username='{$user['username']}'";
+                $result=mysqli_query($conn, $sql);
+
+                if($result){
+                    ?>
+                    <script type="text/javascript">
+                        alert('Successfully change password');
+                    </script>
+                    <?php
+                }else{
+                    ?>
+                    <script type="text/javascript">
+                        alert('Invalid change password');
+                    </script>
+                    <?php
+                }
+            }
+        }else{
+            ?>
+            <script type="text/javascript">
+                alert('Current password mismatch !');
+            </script>
+            <?php
+        }
+    }
 ?>
 
     <!-- ======================================================== -->
@@ -174,7 +175,7 @@ include('../header.html');
                                         </tr>
                                         <tr>
                                             <td colspan="2">
-                                                <span id="cp" class="user-error"></span>
+                                                <span id="cp" class="user-error" style="color: red"></span>
                                             </td>
                                         </tr>
 
@@ -186,7 +187,7 @@ include('../header.html');
                                         </tr>
                                         <tr>
                                             <td colspan="2">
-                                                <span id="np" class="user-error"></span>
+                                                <span id="np" class="user-error" style="color: red"></span>
                                             </td>
                                         </tr>
 
@@ -198,7 +199,7 @@ include('../header.html');
                                         </tr>
                                         <tr>
                                             <td colspan="2">
-                                                <span id="rp" class="user-error"></span>
+                                                <span id="rp" class="user-error" style="color: red"></span>
                                             </td>
                                         </tr>
 
