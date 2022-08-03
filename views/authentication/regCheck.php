@@ -1,9 +1,9 @@
 
 <?php
 $title= "Registration";
-include('../views/header.html');
+include('../../views/header.html');
 ?>
-<script type="text/javascript" src="../js/registrationScript.js"></script>
+<script type="text/javascript" src="../../js/registrationScript.js"></script>
 </head>
 <body>
 
@@ -13,10 +13,10 @@ include('../views/header.html');
             <table width="100%">
                 <tr>
                     <td width="150px" height="80px">
-                        <img src="../asset/company_logo.png" width="100%" height="100%">
+                        <img src="../../asset/company_logo.png" width="100%" height="100%">
                     </td>
                     <td align="right">
-                        <a href="home.html">Home</a> |
+                        <a href="../home.html">Home</a> |
                         <a href="login_check.php">Login</a> |
                         <a href="regCheck.php">Registration</a>
                     </td>
@@ -40,7 +40,7 @@ include('../views/header.html');
                                 <tr>
                                     <td colspan="2" align="center">
                                         <h2 align="center">Sign Up</h2>
-                                        <img src="../asset/your_logo.png">
+                                        <img src="../../asset/your_logo.png">
                                         <hr>
 
                                         <h2 align="center" id="txtHint"></h2>
@@ -48,7 +48,7 @@ include('../views/header.html');
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Username</td>
+                                    <td>User ID</td>
                                     <td>
                                         <input type="text" name="username" id="username" value="">
                                     </td>
@@ -119,6 +119,32 @@ include('../views/header.html');
                                     </td>
                                 </tr>
 
+<!--                                <tr>-->
+<!--                                    <td>Address</td>-->
+<!--                                    <td>-->
+<!--                                        <textarea cols="20" name="address" id="address"></textarea>-->
+<!--                                    </td>-->
+<!--                                </tr>-->
+<!--                                <tr>-->
+<!--                                    <td colspan="2">-->
+<!--                                        <span id="a" class="user-error"></span>-->
+<!--                                    </td>-->
+<!--                                </tr>-->
+
+<!--                                <tr>-->
+<!--                                    <td>Gender</td>-->
+<!--                                    <td>-->
+<!--                                        <input type="radio"  id="gender" value="Male">Male-->
+<!--                                        <input type="radio"  id="gender" value="Female">Female-->
+<!--                                        <input type="radio"  id="gender" value="Others">Others-->
+<!--                                    </td>-->
+<!--                                </tr>-->
+<!--                                <tr>-->
+<!--                                    <td colspan="2">-->
+<!--                                        <span id="g" class="user-error"></span>-->
+<!--                                    </td>-->
+<!--                                </tr>-->
+
                                 <tr>
                                     <td>Program</td>
                                     <td>
@@ -136,6 +162,28 @@ include('../views/header.html');
                                         <span id="pro" class="user-error"></span>
                                     </td>
                                 </tr>
+
+<!--                                <tr>-->
+<!--                                    <td>Blood Group</td>-->
+<!--                                    <td>-->
+<!--                                        <select name="blood" id="blood">-->
+<!--                                            <option value="">-Select-</option>-->
+<!--                                            <option value="A+">A+</option>-->
+<!--                                            <option value="B+">B+</option>-->
+<!--                                            <option value="AB+">AB+</option>-->
+<!--                                            <option value="O+">O+</option>-->
+<!--                                            <option value="A-">A-</option>-->
+<!--                                            <option value="B-">B-</option>-->
+<!--                                            <option value="AB-">AB-</option>-->
+<!--                                            <option value="O-">O-</option>-->
+<!--                                        </select>-->
+<!--                                    </td>-->
+<!--                                </tr>-->
+<!--                                <tr>-->
+<!--                                    <td colspan="2">-->
+<!--                                        <span id="bg" class="user-error"></span>-->
+<!--                                    </td>-->
+<!--                                </tr>-->
 
                                 <tr>
                                     <td>Date of Birth</td>
@@ -168,5 +216,5 @@ include('../views/header.html');
     </tr>
 
 <?php
-include('../views/footer.html');
+include('../../views/footer.html');
 ?>

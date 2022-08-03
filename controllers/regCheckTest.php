@@ -35,18 +35,16 @@
                 'password'=> $password,
                 'email'=>$email,
                 'phone'=> $phone,
-//                'address'=>$address,
-//                'gender'=>$gender,
-//                'blood'=>$blood,
                 'program'=> $program,
                 'dob'=>$dob,
                 'user_type'=>'student',
 //                'created_at' => date('Y-m-d H:i:s'),
 //                'updated_at' => date('Y-m-d H:i:s'),
             ];
-//            print_r($users['dob']);
+//            print_r($users['user_type']);
             $status = insertUser($users);
 //            var_dump($status);
+//            print_r($status);
 
             if($status){
                 echo "success";

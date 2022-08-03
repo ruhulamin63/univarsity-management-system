@@ -1,10 +1,10 @@
 
 <?php
     $title= "Login Page";
-    include('../views/header.html');
+    include('../../views/header.html');
 ?>
 
-        <script type="text/javascript" src="../js/loginCheckScript.js"></script>
+        <script type="text/javascript" src="../../js/loginCheckScript.js"></script>
     </head>
 
     <body>
@@ -15,10 +15,10 @@
                         <table width="100%">
                             <tr>
                                 <td width="150px" height="80px">
-                                    <img src="../asset/company_logo.png" width="100%" height="100%">
+                                    <img src="../../asset/company_logo.png" width="100%" height="100%">
                                 </td>
                                 <td align="right">
-                                    <a href="home.html">Home</a> |
+                                    <a href="../home.html">Home</a> |
                                     <a href="login_check.php">Login</a> |
                                     <a href="regCheck.php">Registration</a>
                                 </td>
@@ -39,7 +39,7 @@
                                         <table>
                                             <tr>
                                                 <td colspan="2" align="center" width="150px" height="50px">
-                                                    <img src="../asset/your_logo.png">
+                                                    <img src="../../asset/your_logo.png">
                                                     <hr>
                                                     <h2 id="txtHint"></h2>
                                                 </td>
@@ -69,24 +69,6 @@
                                                 </td>
                                             </tr>
 
-<!--                                            <tr>-->
-<!--                                                <td>User-Type</td>-->
-<!--                                                <td>-->
-<!--                                                    <select name="user_type" id="user_type">-->
-<!--                                                        <option value="">-Select-</option>-->
-<!--                                                        <option value="admin">ADMIN</option>-->
-<!--                                                        <option value="teacher">TEACHER</option>-->
-<!--                                                        <option value="student">STUDENT</option>-->
-<!--                                                        <option value="staff">STAFF</option>-->
-<!--                                                    </select>-->
-<!--                                                </td>-->
-<!--                                            </tr>-->
-<!--                                            <tr>-->
-<!--                                                <td colspan="2">-->
-<!--                                                    <span id="user-type" class="user-error"></span>-->
-<!--                                                </td>-->
-<!--                                            </tr>-->
-
                                             <tr>
                                                 <td><input type="checkbox" id="remember" name="remember"  <?php if (isset($_COOKIE['username'])){ echo "checked";} ?>> Remember Me</td>
                                             </tr>
@@ -108,5 +90,5 @@
                 </tr>
 
 <?php
-include('../views/footer.html');
+include('../../views/footer.html');
 ?>
