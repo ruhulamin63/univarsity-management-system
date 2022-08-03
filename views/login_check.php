@@ -69,23 +69,23 @@
                                                 </td>
                                             </tr>
 
-                                            <tr>
-                                                <td>User-Type</td>
-                                                <td>
-                                                    <select name="user_type" id="user_type">
-                                                        <option value="">-Select-</option>
-                                                        <option value="admin">ADMIN</option>
-                                                        <option value="teacher">TEACHER</option>
-                                                        <option value="student">STUDENT</option>
-                                                        <option value="staff">STAFF</option>
-                                                    </select>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="2">
-                                                    <span id="user-type" class="user-error"></span>
-                                                </td>
-                                            </tr>
+<!--                                            <tr>-->
+<!--                                                <td>User-Type</td>-->
+<!--                                                <td>-->
+<!--                                                    <select name="user_type" id="user_type">-->
+<!--                                                        <option value="">-Select-</option>-->
+<!--                                                        <option value="admin">ADMIN</option>-->
+<!--                                                        <option value="teacher">TEACHER</option>-->
+<!--                                                        <option value="student">STUDENT</option>-->
+<!--                                                        <option value="staff">STAFF</option>-->
+<!--                                                    </select>-->
+<!--                                                </td>-->
+<!--                                            </tr>-->
+<!--                                            <tr>-->
+<!--                                                <td colspan="2">-->
+<!--                                                    <span id="user-type" class="user-error"></span>-->
+<!--                                                </td>-->
+<!--                                            </tr>-->
 
                                             <tr>
                                                 <td><input type="checkbox" id="remember" name="remember"  <?php if (isset($_COOKIE['username'])){ echo "checked";} ?>> Remember Me</td>

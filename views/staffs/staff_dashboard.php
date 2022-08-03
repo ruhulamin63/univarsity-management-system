@@ -5,7 +5,7 @@
         header('location: ../../controllers/login_check.php');
     }
 
-    $data=$_SESSION['current_user'];
+//    $data=$_SESSION['current_user'];
     //var_dump($data);
 ?>
 
@@ -27,9 +27,13 @@ include('staff_head.html');
                             <img src="../../asset/company_logo.png" alt="main_logo" width="100%" height="100%">
                         </td>
                         <td align="right" >Logged in as
-                            <a href="view_student_profile.php">
+                            <a href="view_staff_profile.php">
                                 <?php
-                                echo $data['full_name'];
+                                    require_once ('../../models/UserModel.php');
+
+                                    $id=$_SESSION['current_user']['username'];
+                                    $data = getUserById($id);
+                                    echo $data['full_name'];
                                 ?>
                             </a> |
                             <a href="../../controllers/logout_check.php">Logout</a>
@@ -100,10 +104,10 @@ include('staff_head.html');
             <details>
                 <summary><b>Setting</b></summary>
                 <details>
-                    <summary><a href="view_student_profile.php">View Profile</a></summary>
+                    <summary><a href="view_staff_profile.php">View Profile</a></summary>
                 </details>
                 <details>
-                    <summary><a href="edit_student_profile.php">Edit Profile</a></summary>
+                    <summary><a href="edit_staff_profile.php">Edit Profile</a></summary>
                 </details>
                 <details>
                     <summary><a href="change_staff_password.php">Change Password</a></summary>
@@ -116,7 +120,12 @@ include('staff_head.html');
 
 
         <td colspan="2" align="center">
-            <h1>Welcome to our staff, <?php echo $data['full_name'];?>
+            <h1>Welcome to our staff,
+                <?php
+                    $id=$_SESSION['current_user']['username'];
+                    $data = getUserById($id);
+                    echo $data['full_name'];
+                ?>
             </h1>
         </td>
     </tr>

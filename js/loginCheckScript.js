@@ -3,7 +3,7 @@ function loginCheckValidation(){
 
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
-    const user_type = document.getElementById('user_type').value;
+    // const user_type = document.getElementById('user_type').value;
     const remember = document.getElementById('remember').checked;
     const submit = document.getElementById('submit').value;
 
@@ -19,11 +19,11 @@ function loginCheckValidation(){
         document.getElementById('pass').innerHTML="";
     }
 
-    if(user_type==''){
-        document.getElementById('user-type').innerHTML = "*Please select the user type ?";
-    }else {
-        document.getElementById('user-type').innerHTML="";
-    }
+    // if(user_type==''){
+    //     document.getElementById('user-type').innerHTML = "*Please select the user type ?";
+    // }else {
+    //     document.getElementById('user-type').innerHTML="";
+    // }
 
     const xhttp = new XMLHttpRequest();
 
@@ -35,7 +35,7 @@ function loginCheckValidation(){
         if(this.readyState == 4 && this.status == 200){
 
             if(this.responseText == "student"){
-                location="../views/students/dashboard.php";
+                location="../views/students/student_dashboard.php";
 
             }else if(this.responseText == "staff"){
                 location="../views/staffs/staff_dashboard.php";
@@ -46,5 +46,5 @@ function loginCheckValidation(){
             document.getElementById('txtHint').innerHTML =resutl.fontcolor('red');
         }
     }
-    xhttp.send('&username='+username+'&password='+password+'&user_type='+user_type+'&remember='+remember+'&submit='+submit);
+    xhttp.send('&username='+username+'&password='+password+'&remember='+remember+'&submit='+submit);
 }

@@ -1,65 +1,43 @@
 <?php
 
-session_start();
-require_once('../../models/UserModel.php');
-//require_once('../../models/db.php');
+    require_once('../../models/UserModel.php');
+    //    this file from controllers (view_profile_controllers.php)
+    //    require_once('../../controllers/view_student_profile_controller.php');
 
-if(!isset($_SESSION['flag'])){
-    header('location: ../../controllers/login_check.php');
-}
 
-//=============================================================================
+    session_start();
 
-$user=$_SESSION['current_user'];
-//print_r($user);
-
-if(isset($_POST['change_pass_btn'])){
-
-    $curr_pass = $_POST['curr_pass'];
-    $new_pass = $_POST['new_pass'];
-    $re_pass = $_POST['re_pass'];
-
-//=========================================================================================
-
-    if($user['password']==$curr_pass){
-        if($new_pass==$re_pass){
-
-            $conn=getConnection();
-            $sql="update users set password='{$new_pass}' where username='{$user['username']}'";
-            $result=mysqli_query($conn, $sql);
-
-            if($result){
-                ?>
-                <script type="text/javascript">
-                    alert('Successfully change password');
-                </script>
-                <?php
-            }else{
-                ?>
-                <script type="text/javascript">
-                    alert('Invalid change password');
-                </script>
-                <?php
-            }
-        }
-    }else{
-        ?>
-        <script type="text/javascript">
-            alert('Current password mismatch !');
-        </script>
-        <?php
+    if (!isset($_SESSION['flag'])) {
+        header('location: login_check.php');
     }
-}
+
+
+    $id = $_SESSION['current_user']['username'];
+    $data = getUserById($id);
+
+    $username = $data['username'];
+    $full_name = $data['full_name'];
+    $email = $data['email'];
+    //    $gender=$data['gender'];
+    $phone = $data['phone'];
+    //    $address=$data['address'];
+    $program = $data['program'];
+    //    $blood=$data['blood'];
+    $dob = $data['dob'];
+
+    //==================================================
+
 ?>
 
-    <!-- ======================================================== -->
+    <!-- ========================================================= -->
 
 <?php
-$title= "Change Password";
-include('../staffs/staff_head.html');
+    $title= "View Profile";
+    include('../header.html');
 ?>
-    <script type="text/javascript" src="../../js/staffs-js/change_staff_password.js"></script>
+    <script type="text/javascript" src="../../js/view_staff_profile.js"></script>
     </head>
+
     <body>
 
     <table border="1px" align="center" width="100%">
@@ -67,28 +45,28 @@ include('../staffs/staff_head.html');
             <td>
                 <table width="100%">
                     <tr>
-                        <td width="150px" height="50px">
-                            <img src="../../asset/company_logo.png" alt="main_logo" width="100%" height="100%">
+                        <td width="200px" height="80px">
+                            <img src="../../asset/company_logo.png" width="100%" height="100%">
                         </td>
-                        <td align="right" >Logged in as
+                        <td align="right" >
+                            Logged in as
                             <a href="view_staff_profile.php">
                                 <?php
-                                    require_once ('../../models/UserModel.php');
 
                                     $id=$_SESSION['current_user']['username'];
                                     $data = getUserById($id);
                                     echo $data['full_name'];
                                 ?>
                             </a> |
-                            <a href="../../controllers/logout_check.php">Logout</a>
+                            <a href="../../controllers/logout_check.php"> Logout </a>
                         </td>
                     </tr>
                 </table>
             </td>
         </tr>
     </table>
-
-    <table  border="1px" align="center" width="100%">
+    <!-- creating new table -->
+    <table border="1px" align="center" width="100%">
         <tr>
             <td width="200px" height="425px"><h2>Main Menu</h2>
                 <hr>
@@ -151,7 +129,7 @@ include('../staffs/staff_head.html');
                         <summary><a href="view_staff_profile.php">View Profile</a></summary>
                     </details>
                     <details>
-                        <summary><a href="edit_student_profile.php">Edit Profile</a></summary>
+                        <summary><a href="edit_staff_profile.php">Edit Profile</a></summary>
                     </details>
                     <details>
                         <summary><a href="change_staff_password.php">Change Password</a></summary>
@@ -162,53 +140,73 @@ include('../staffs/staff_head.html');
                 </details>
             </td>
 
-            <td>
-                <table align="center">
+            <!-- ==================================================================================================-->
+            <td align="center">
+                <table>
                     <tr>
                         <td>
-                            <form method="post" action="change_staff_password.php" onsubmit="return validation()">
+                            <form onsubmit="return viewProfileValidation()">
                                 <fieldset>
-                                    <legend>CHANGE PASSWORD</legend>
-                                    <table>
+                                    <legend>PROFILE</legend>
+                                    <table align="center">
                                         <tr>
-                                            <td>Current Password</td>
+                                            <td>Username:</td>
                                             <td>
-                                                <input type="password" name="curr_pass" id="curr_pass" value="">
+                                                <?php echo $username; ?>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td colspan="2">
-                                                <span id="cp" class="user-error"></span>
+                                            <td>Full Name:</td>
+                                            <td>
+                                                <?php echo $full_name; ?>
+                                            </td>
+
+                                            <form method="post" action="staff_profile_pic.php" enctype="multipart/form-data">
+                                                <td rowspan="4" align="center">
+                                                    <?php
+                                                    //require_once('../model/db.php');
+                                                    require_once('../../models/imageModel.php');
+
+                                                    /*$conn = getConnection();
+                                                    $sql = "select * from user_image where user";
+                                                    $result = mysqli_query($conn, $sql);
+                                                    $row = mysqli_fetch_assoc($result);*/
+
+                                                    $result = getImageById($username);
+                                                    $row = mysqli_fetch_assoc($result);
+
+                                                    if($row>0){
+                                                        ?>
+                                                            <img src="<?php echo "{$row['image']}"; ?>" width="200px" height="200px"><br>
+                                                        <?php
+                                                    }else{
+                                                        ?>
+                                                            <img src="../../asset/user.png" width="100px" height="100px"><br>
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                    <a href="staff_profile_pic.php">Change</a>
+                                                </td>
+                                            </form>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Mobile Phone:</td>
+                                            <td>
+                                                <?php echo $phone; ?>
                                             </td>
                                         </tr>
 
                                         <tr>
-                                            <td>New Password</td>
+                                            <td>Date of Birth:</td>
                                             <td>
-                                                <input type="password" name="new_pass" id="new_pass" value="">
+                                                <?php echo $dob; ?>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td colspan="2">
-                                                <span id="np" class="user-error"></span>
-                                            </td>
+                                            <td><a href="edit_staff_profile.php">Edit Profile</a></td>
                                         </tr>
-
-                                        <tr>
-                                            <td>Retype New Password</td>
-                                            <td>
-                                                <input type="password" name="re_pass" id="re_pass" value="">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2">
-                                                <span id="rp" class="user-error"></span>
-                                            </td>
-                                        </tr>
-
                                     </table>
-                                    <hr>
-                                    <input type="submit" name="change_pass_btn" value="Save">
                                 </fieldset>
                             </form>
                         </td>
@@ -216,7 +214,6 @@ include('../staffs/staff_head.html');
                 </table>
             </td>
         </tr>
-
 <?php
     include('../footer.html');
 ?>

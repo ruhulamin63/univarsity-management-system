@@ -5,7 +5,7 @@ function viewProfileValidation(){
 
     const xhttp = new XMLHttpRequest();
 
-    xhttp.open('POST', '../views/students/view_student_profile.php', true);
+    xhttp.open('POST', '../views/staff/view_staff_profile.php', true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
     xhttp.onreadystatechange = function(){

@@ -46,7 +46,7 @@ include('student_head.html');
             <hr>
 
             <details>
-                <summary><a href="dashboard.php">Dashboard</a></summary>
+                <summary><a href="student_dashboard.php">Dashboard</a></summary>
             </details>
 
 <!--            <details>-->

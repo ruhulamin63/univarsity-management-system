@@ -65,10 +65,10 @@
                     <td>
                         <table width="100%">
                             <tr>
-                                <td width="200px" height="60px"><img src="../../asset/company_logo.png" width="100%" height="100%"></td>
+                                <td width="200px" height="80px"><img src="../../asset/company_logo.png" width="100%" height="100%"></td>
                                 <td align="right" >
                                     Logged in as
-                                    <a href="view_student_profile.php.php">
+                                    <a href="view_student_profile.php">
                                         <?php
                                         echo $data['full_name'];
                                         ?>
@@ -88,7 +88,7 @@
                         <hr>
 
                         <details>
-                            <summary><a href="dashboard.php">Dashboard</a></summary>
+                            <summary><a href="student_dashboard.php">Dashboard</a></summary>
                         </details>
 
         <!--                <details>-->
@@ -151,7 +151,7 @@
                                 <summary><a href="change_student_password.php">Change Password</a></summary>
                             </details>
                             <details>
-                                <summary><a href="logout_check.php">Logout</a></summary>
+                                <summary><a href="../../controllers/logout_check.php">Logout</a></summary>
                             </details>
                         </details>
                     </td>

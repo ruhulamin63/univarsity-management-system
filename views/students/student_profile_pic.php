@@ -72,7 +72,7 @@
             <td>
                 <table width="100%">
                     <tr>
-                        <td width="200px" height="60px"><img src="../../asset/company_logo.png" width="100%" height="100%"></td>
+                        <td width="200px" height="80px"><img src="../../asset/company_logo.png" width="100%" height="100%"></td>
                         <td align="right" >
                             Logged in as
                             <a href="view_student_profile.php">
@@ -94,7 +94,7 @@
                 <hr>
 
                 <details>
-                    <summary><a href="dashboard.php">Dashboard</a></summary>
+                    <summary><a href="student_dashboard.php">Dashboard</a></summary>
                 </details>
 
 
@@ -165,7 +165,7 @@
 
 
             <td>
-                <form name="myform" method="post" action="profile_pic.php" onsubmit="return imageValidation()" enctype="multipart/form-data">
+                <form name="myform" method="post" action="student_profile_pic.php" onsubmit="return imageValidation()" enctype="multipart/form-data">
                     <fieldset>
                         <legend>PROFILE</legend>
                         <table>

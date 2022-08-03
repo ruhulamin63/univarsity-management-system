@@ -68,7 +68,7 @@ include('../header.html');
                 <hr>
 
                 <details>
-                    <summary><a href="dashboard.php">Dashboard</a></summary>
+                    <summary><a href="student_dashboard.php">Dashboard</a></summary>
                 </details>
 
 <!--                <details>-->
@@ -161,7 +161,7 @@ include('../header.html');
                                                 ?>
                                             </td>
 
-                                            <form method="post" action="profile_pic.php" enctype="multipart/form-data">
+                                            <form method="post" action="student_profile_pic.php" enctype="multipart/form-data">
                                                 <td rowspan="4" align="center">
                                                     <?php
                                                     //require_once('../model/db.php');
@@ -185,7 +185,7 @@ include('../header.html');
                                                         <?php
                                                     }
                                                     ?>
-                                                    <a href="profile_pic.php">Change</a>
+                                                    <a href="student_profile_pic.php">Change</a>
                                                 </td>
                                             </form>
                                         </tr>
