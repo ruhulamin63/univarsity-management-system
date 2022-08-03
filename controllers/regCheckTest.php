@@ -28,28 +28,41 @@
         if($count>0){
             echo "User Id Already Exits";
         }else{
-
-            $users = [
-                'username'=>$username,
-                'full_name'=>$full_name,
-                'password'=> $password,
-                'email'=>$email,
-                'phone'=> $phone,
-                'program'=> $program,
-                'dob'=>$dob,
-                'user_type'=>'student',
-//                'created_at' => date('Y-m-d H:i:s'),
-//                'updated_at' => date('Y-m-d H:i:s'),
-            ];
-//            print_r($users['user_type']);
-            $status = insertUser($users);
-//            var_dump($status);
-//            print_r($status);
-
-            if($status){
-                echo "success";
-            }else{
+            if($username==""||$password==""||$email==""||$phone==""||$program==""||$dob==""){
                 echo "Please check your required field ?";
+//                var_dump('test');
+            }else{
+                $users = [
+                    'username'=>$username,
+                    'full_name'=>$full_name,
+                    'password'=> $password,
+                    'email'=>$email,
+                    'phone'=> $phone,
+                    'program'=> $program,
+                    'dob'=>$dob,
+                    'user_type'=>'student',
+                ];
+
+                $status = insertUser($users);
+//            var_dump($status);
+
+                if($status){
+
+                    $user_data = getUserById($username);
+                    $users_data = [
+                        'user_id'=>$user_data['id'],
+                        'student_name'=>$user_data['full_name'],
+                        'student_phone'=> $user_data['phone'],
+                        'student_program'=>$user_data['program'],
+                        'student_dob'=> $user_data['dob'],
+                    ];
+                    studentData($users_data);
+
+                    echo "success";
+                }else{
+                    echo "Please check your required field ?";
+                }
+
             }
         }
     }

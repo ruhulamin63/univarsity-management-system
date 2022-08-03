@@ -32,12 +32,6 @@
                 $data = getUserById($username);
                 $_SESSION['current_user']=$data;
 
-
-
-
-
-                //=================================end json file===============================
-
 //                $_SESSION['user_type']=$data; //global declaration database\
 //                var_dump($data);
 

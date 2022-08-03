@@ -2,7 +2,7 @@
 
 require_once('db.php');
 
-//=======================Validatin for login==================================================
+//=======================Validation for login==================================================
 function validateUser($username, $password){
 
     $conn = getConnection();
@@ -16,6 +16,22 @@ function validateUser($username, $password){
         return false;
     }
 }
+
+//===================================create student data=======================
+function studentData($data){
+    $conn = getConnection();
+    $sql = "insert into students values('', '{$data['user_id']}', '{$data['student_name']}', '{$data['student_phone']}', '{$data['student_program']}', '{$data['student_dob']}','', '', '')";
+    $result = mysqli_query($conn, $sql);
+//    $row = mysqli_fetch_assoc($result);
+
+//    if($row!=0){
+//        return true;
+//    }else{
+//        return false;
+//    }
+    return $result;
+}
+//===================================end student data=======================
 
 //======================================================================================
 
