@@ -174,8 +174,9 @@ include('../header.html');
 
                                                     $result = getImageById($username);
                                                     $row = mysqli_fetch_assoc($result);
+//                                                    var_dump($row);
 
-                                                    if($row>0){
+                                                    if($row['image'] != ""){
                                                         ?>
                                                             <img src="<?php echo "{$row['image']}"; ?>" width="200px" height="200px"><br>
                                                         <?php

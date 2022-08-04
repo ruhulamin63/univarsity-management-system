@@ -7,24 +7,18 @@
 
         $username = $_REQUEST['username'];
         $password = $_REQUEST['password'];
-//        $user_type = $_REQUEST['user_type'];
-//        var_dump($password);
 
         if($username !='' && $password !=''){
             $status = validateUser($username, $password);
 
             if($status){
 
-                if(!empty($_REQUEST['remember'])){
+                if($_POST["remember"]=='true'){
+                    $remember = $_REQUEST['remember'];
+
                     setcookie('username', $username, time()+(86400*30), "/");
                     setcookie('password', $password, time()+(86400*30), "/"); // 1 day = 86400
-                }else{
-                    if(isset($_COOKIE['username'])){
-                        setcookie('username');
-                    }
-                    if(isset($_COOKIE['password'])){
-                        setcookie('password');
-                    }
+                    setcookie('loginUser', $remember, time()+(86400*30), "/");
                 }
 
                 $_SESSION['flag'] = true;

@@ -75,27 +75,27 @@ include('student_head.html');
 <!--                </details>-->
 <!--            </details>-->
 <!---->
-<!--            <details>-->
-<!--                <summary><b>Requirement</b></summary>-->
-<!--                <details>-->
-<!--                    <summary><a href="add_job.php">Add Job Titles</a></summary>-->
-<!--                </details>-->
-<!--                <details>-->
-<!--                    <summary><a href="view_job.php">View Job Titles</a></summary>-->
-<!--                </details>-->
-<!--                <details>-->
-<!--                    <summary><a href="add_job_vacancy.php">Add Job Vacancy</a></summary>-->
-<!--                </details>-->
-<!--                <details>-->
-<!--                    <summary><a href="view_job_vacancy.php">View Job Vacancy</a></summary>-->
-<!--                </details>-->
-<!--                <details>-->
-<!--                    <summary><a href="online_app.php">Online Application</a></summary>-->
-<!--                </details>-->
-<!--                <details>-->
-<!--                    <summary><a href="fixing_interview.php">Fixing Interview Online</a></summary>-->
-<!--                </details>-->
-<!--            </details>-->
+            <details>
+                <summary><b>Grade Reports</b></summary>
+                <details>
+                    <summary><a href="add_job.php">Add Job Titles</a></summary>
+                </details>
+                <details>
+                    <summary><a href="view_job.php">View Job Titles</a></summary>
+                </details>
+                <details>
+                    <summary><a href="add_job_vacancy.php">Add Job Vacancy</a></summary>
+                </details>
+                <details>
+                    <summary><a href="view_job_vacancy.php">View Job Vacancy</a></summary>
+                </details>
+                <details>
+                    <summary><a href="online_app.php">Online Application</a></summary>
+                </details>
+                <details>
+                    <summary><a href="fixing_interview.php">Fixing Interview Online</a></summary>
+                </details>
+            </details>
 
             <details>
                 <summary><b>Setting</b></summary>

@@ -25,12 +25,6 @@
 //        $status = updateUser($users, $username);
 //        var_dump($result);
 
-        if($result){
-            echo "success";
-        }else{
-            echo "fail !";
-        }
-
     }else{
         $id=$_SESSION['current_user']['username'];
         $data = getUserById($id);

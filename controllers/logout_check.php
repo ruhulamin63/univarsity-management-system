@@ -4,6 +4,7 @@
     unset($_SESSION['flag']);
     header('location: ../views/login_check.php');
 
-    //	setrawcookie('username', true, time()-1, '/');
-    //	setrawcookie('password', true, time()-1, '/');
+//    	setcookie('username', true, time()-1, '/');
+//    	setcookie('password', true, time()-1, '/');
+//    	setcookie('loginUser', true, time()-1, '/');
 ?>

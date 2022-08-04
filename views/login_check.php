@@ -88,7 +88,7 @@
 <!--                                            </tr>-->
 
                                             <tr>
-                                                <td><input type="checkbox" id="remember" name="remember"  <?php if (isset($_COOKIE['username'])){ echo "checked";} ?>> Remember Me</td>
+                                                <td><input type="checkbox" id="remember" name="remember" <?php if(isset($_COOKIE['loginUser'])){ echo "checked";} ?>> Remember Me</td>
                                             </tr>
                                             <tr align="center">
                                                 <td colspan="2">
