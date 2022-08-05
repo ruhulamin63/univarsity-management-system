@@ -19,15 +19,7 @@ function editProfileValidation(){
     xhttp.onreadystatechange = function(){
 
         if(this.readyState == 4 && this.status == 200) {
-            // document.getElementById('txtHint').innerHTML = this.responseText;
-
-            if(this.responseText == "success") {
-                var result = this.responseText;
-                location ="../views/students/edit_student_profile.php";
-            }else{
-                var result = this.responseText;
-            }
-            document.getElementById('txtHint').innerHTML = result.fontcolor('red');
+            alert('Update profile');
         }
     }
     xhttp.send('&full_name='+full_name+'&phone='+phone+'&email='+email +'&program='+program+'&dob='+dob +'&submit='+submit);

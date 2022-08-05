@@ -4,15 +4,12 @@
     if(!isset($_SESSION['flag'])){
         header('location: ../../controllers/login_check.php');
     }
-
-    $data=$_SESSION['current_user'];
-    //var_dump($data);
 ?>
 
-    <!-- ============================================================ -->
+    <!-- ================================================================ -->
 
 <?php
-    $title= "Dashboard";
+    $title= "Attendance";
     include('student_head.html');
 ?>
     </head>
@@ -27,9 +24,13 @@
                             <img src="../../asset/company_logo.png" alt="main_logo" width="100%" height="100%">
                         </td>
                         <td align="right" >Logged in as
-                            <a href="view_student_profile.php">
+                            <a href="../../controllers/students/view_student_profile_controller.php">
                                 <?php
-                                    echo $data['full_name'];
+                                    require_once('../../models/UserModel.php');
+                                    $id=$_SESSION['current_user']['username'];
+                                    $data = getUserById($id);
+
+                                    echo $data['full_name']
                                 ?>
                             </a> |
                             <a href="../../controllers/logout_check.php">Logout</a>
@@ -90,12 +91,43 @@
             </details>
         </td>
 
-
         <td colspan="2" align="center">
-            <h1>Welcome to our student, <?php echo $data['full_name'];?>
-            </h1>
+            <table border="1px" align="center">
+                <tr>
+                    <td align="center" colspan="11">
+                        <h2>Attendance</h2>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Date</th>
+                    <th>Status</th>
+                </tr>
+
+                <?php
+                require_once('../../models/studentInfoModel.php');
+
+                $result = getStudentInfo($_SESSION['current_user']['id']);
+//                print_r($result);
+                foreach ($result as $key => $value) {
+                    $student_id = getStudentAttendance($value['id']);
+                }
+//                print_r($student_id);
+
+                if(count($student_id)>0){
+                    foreach ($student_id as $key => $value) {
+                        echo "
+                                        <tr>
+                                            <td>{$value['date']}</td>
+                                            <td>{$value['status']}</td>
+                                        </tr>
+                                    ";
+                    }
+                }
+                ?>
+
+            </table>
         </td>
     </tr>
 <?php
-include('../footer.html');
+    include('../footer.html');
 ?>

@@ -1,18 +1,15 @@
 <?php
-    session_start();
+session_start();
 
-    if(!isset($_SESSION['flag'])){
-        header('location: ../../controllers/login_check.php');
-    }
-
-    $data=$_SESSION['current_user'];
-    //var_dump($data);
+if(!isset($_SESSION['flag'])){
+    header('location: ../../controllers/login_check.php');
+}
 ?>
 
-    <!-- ============================================================ -->
+    <!-- ================================================================ -->
 
 <?php
-    $title= "Dashboard";
+    $title= "Notification";
     include('student_head.html');
 ?>
     </head>
@@ -27,9 +24,13 @@
                             <img src="../../asset/company_logo.png" alt="main_logo" width="100%" height="100%">
                         </td>
                         <td align="right" >Logged in as
-                            <a href="view_student_profile.php">
+                            <a href="../../controllers/students/view_student_profile_controller.php">
                                 <?php
-                                    echo $data['full_name'];
+                                    require_once('../../models/UserModel.php');
+                                    $id=$_SESSION['current_user']['username'];
+                                    $data = getUserById($id);
+
+                                    echo $data['full_name']
                                 ?>
                             </a> |
                             <a href="../../controllers/logout_check.php">Logout</a>
@@ -46,11 +47,17 @@
             <hr>
 
             <details>
-                <summary><a href="student_dashboard.php">Dashboard</a></summary>
+                <summary><b>Dashboard</b></summary>
+                <details>
+                    <summary><a href="student_dashboard.php">Dashboard</a></summary>
+                </details>
             </details>
 
             <details>
-                <summary><a href="student_notification.php">Notify</a></summary>
+                <summary><b>Notification</b></summary>
+                <details>
+                    <summary><a href="student_notification.php">Notify</a></summary>
+                </details>
             </details>
 
             <details>
@@ -90,12 +97,42 @@
             </details>
         </td>
 
-
         <td colspan="2" align="center">
-            <h1>Welcome to our student, <?php echo $data['full_name'];?>
-            </h1>
+            <table border="1px" align="center">
+                <tr>
+                    <td align="center" colspan="11">
+                        <h2>Grade Report's</h2>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Notice Title</th>
+                    <th>Description</th>
+                    <th>Time</th>
+                    <th>Date</th>
+                </tr>
+
+                <?php
+                require_once('../../models/notificationModel.php');
+
+                $result = getStudentNotify();
+
+                if(count($result)>0){
+                    foreach ($result as $key => $value) {
+                        echo "
+                                    <tr>
+                                        <td>{$value['notice_title']}</td>
+                                        <td>{$value['notice_desc']}</td>
+                                        <td>{$value['time']}</td>
+                                        <td>{$value['date']}</td>
+                                    </tr>
+                                ";
+                    }
+                }
+                ?>
+
+            </table>
         </td>
     </tr>
 <?php
-include('../footer.html');
+    include('../footer.html');
 ?>
