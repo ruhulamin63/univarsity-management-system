@@ -9,8 +9,8 @@
     <!-- ================================================================ -->
 
 <?php
-    $title= "Attendance";
-    include('student_head.html');
+    $title= "Salary Statement";
+    include('staff_head.html');
 ?>
     </head>
     <body>
@@ -26,11 +26,11 @@
                         <td align="right" >Logged in as
                             <a href="../../controllers/students/view_student_profile_controller.php">
                                 <?php
-                                    require_once('../../models/UserModel.php');
-                                    $id=$_SESSION['current_user']['username'];
-                                    $data = getUserById($id);
+                                require_once('../../models/UserModel.php');
+                                $id=$_SESSION['current_user']['username'];
+                                $data = getUserById($id);
 
-                                    echo $data['full_name']
+                                echo $data['full_name']
                                 ?>
                             </a> |
                             <a href="../../controllers/logout_check.php">Logout</a>
@@ -45,49 +45,43 @@
     <tr>
 
         <?php
-            require_once('../navigator/sideBar.html');
+            require_once('../navigator/staff_side_bar.html');
         ?>
 
         <td colspan="2" align="center">
             <table border="1px" align="center">
                 <tr>
                     <td align="center" colspan="11">
-                        <h2>Attendance</h2>
+                        <h2>Work Schedule</h2>
                     </td>
                 </tr>
                 <tr>
-                    <th>Date</th>
-                    <th>Status</th>
-                    <th>Student Name</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Hours of Worked</th>
                 </tr>
 
                 <?php
-                require_once('../../models/studentInfoModel.php');
+                    include('../../models/salaryStatementModel.php');
+                    include('../../models/workingScheduleModel.php');
 
-                $result = getStudentInfo($_SESSION['current_user']['id']);
-//                print_r($result);
+                    $result = getAllEmpId();
 
-//                foreach ($result as $key => $value) {
-//                    $student_id = getStudentAttendance($value['id']);
-//                }
-
-                $student_id = getStudentAttendance();
-
-                if(count($student_id)>0){
-                    foreach ($student_id as $key => $value) {
-                        echo "
-                                        <tr>
-                                            <td>{$value['date']}</td>
-                                            <td>{$value['status']}</td>
-                                    ";
-
-                        $student_name = getStudentName($value['student_id']);
-                        echo "
-                                        <td>{$student_name['student_name']}</td>
-                                    </tr>
-                                ";
+                    foreach ($result as $key => $value) {
+                        $work_schedule_id = getStaffSWorkingSchedule($value['id']);
                     }
-                }
+
+                    if(count($work_schedule_id)>0){
+                        foreach ($work_schedule_id as $key => $value) {
+                            echo "
+                                            <tr>
+                                                <td>{$value['start_date']}</td>
+                                                <td>{$value['end_date']}</td>
+                                                <td>{$value['hours_worked']}</td>
+                                            </tr>
+                                        ";
+                        }
+                    }
                 ?>
 
             </table>

@@ -20,10 +20,10 @@ function getStudentInfo($id){
 
 //======================================================================================
 
-function getStudentAttendance($student_id){
+function getStudentAttendance(){
 
     $conn = getConnection();
-    $sql = "select * from attendance where student_id='{$student_id}'";
+    $sql = "select * from attendance";
     $result = mysqli_query($conn, $sql);
 
     $users =[];
@@ -33,6 +33,17 @@ function getStudentAttendance($student_id){
     }
 //    var_dump($users);
     return $users;
+}
+
+//======================================================================================
+
+function getStudentName($student_name){
+
+    $conn = getConnection();
+    $sql = "select * from students where id='{$student_name}'";
+    $result = mysqli_query($conn, $sql);
+
+    return mysqli_fetch_assoc($result);
 }
 
 //======================================================================================
@@ -54,10 +65,10 @@ function getGradeInfo($id){
 
 //======================================================================================
 
-function getTeacherInfo($id){
+function getAllClassroomInfo(){
 
     $conn = getConnection();
-    $sql = "select * from teachers where id={$id}";
+    $sql = "select * from classrooms";
     $result = mysqli_query($conn, $sql);
 
     $users =[];
@@ -67,6 +78,17 @@ function getTeacherInfo($id){
     }
 //    var_dump($users);
     return $users;
+}
+
+//======================================================================================
+
+function getTeacherInfo($id){
+
+    $conn = getConnection();
+    $sql = "select * from teachers where id={$id}";
+    $result = mysqli_query($conn, $sql);
+
+    return mysqli_fetch_assoc($result);
 }
 
 //======================================================================================
@@ -84,6 +106,17 @@ function getStudentClassroom($teacher_id){
     }
 //    var_dump($result);
     return $users;
+}
+
+//======================================================================================
+
+function getStudentData($id){
+
+    $conn = getConnection();
+    $sql = "select * from students where id={$id}";
+    $result = mysqli_query($conn, $sql);
+
+    return mysqli_fetch_assoc($result);
 }
 
 ?>

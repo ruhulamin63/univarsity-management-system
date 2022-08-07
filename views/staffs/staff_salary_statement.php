@@ -9,8 +9,8 @@
     <!-- ================================================================ -->
 
 <?php
-    $title= "Attendance";
-    include('student_head.html');
+    $title= "Salary Statement";
+    include('staff_head.html');
 ?>
     </head>
     <body>
@@ -45,54 +45,48 @@
     <tr>
 
         <?php
-            require_once('../navigator/sideBar.html');
+            require_once('../navigator/staff_side_bar.html');
         ?>
 
         <td colspan="2" align="center">
             <table border="1px" align="center">
                 <tr>
                     <td align="center" colspan="11">
-                        <h2>Attendance</h2>
+                        <h2>Salary Information</h2>
                     </td>
                 </tr>
                 <tr>
-                    <th>Date</th>
-                    <th>Status</th>
-                    <th>Student Name</th>
+                    <th>Hourly Rate</th>
+                    <th>Salary</th>
+                    <th>Effective Date</th>
                 </tr>
 
                 <?php
-                require_once('../../models/studentInfoModel.php');
+                    include('../../models/salaryStatementModel.php');
 
-                $result = getStudentInfo($_SESSION['current_user']['id']);
-//                print_r($result);
+                    $result = getAllEmpId();
+    //                print_r($result);
 
-//                foreach ($result as $key => $value) {
-//                    $student_id = getStudentAttendance($value['id']);
-//                }
-
-                $student_id = getStudentAttendance();
-
-                if(count($student_id)>0){
-                    foreach ($student_id as $key => $value) {
-                        echo "
-                                        <tr>
-                                            <td>{$value['date']}</td>
-                                            <td>{$value['status']}</td>
-                                    ";
-
-                        $student_name = getStudentName($value['student_id']);
-                        echo "
-                                        <td>{$student_name['student_name']}</td>
-                                    </tr>
-                                ";
+                    foreach ($result as $key => $value) {
+                        $salary_id = getStaffSalaryStatement($value['id']);
                     }
-                }
+
+                    if(count($salary_id)>0){
+                        foreach ($salary_id as $key => $value) {
+                            echo "
+                                            <tr>
+                                                <td>{$value['hourly_rate']}</td>
+                                                <td>{$value['salary']}</td>
+                                                <td>{$value['effective_date']}</td>
+                                            </tr>
+                                        ";
+                        }
+                    }
                 ?>
 
             </table>
         </td>
     </tr>
 <?php
-    include('../footer.html');
+include('../footer.html');
 ?>

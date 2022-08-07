@@ -32,8 +32,8 @@
     <!-- ========================================================= -->
 
 <?php
-$title= "View Profile";
-include('../header.html');
+    $title= "View Profile";
+    include('../header.html');
 ?>
     <script type="text/javascript" src="../../js/view_student_profile.js"></script>
     </head>
@@ -68,53 +68,9 @@ include('../header.html');
     <!-- creating new table -->
     <table border="1px" align="center" width="100%">
         <tr>
-            <td width="200px" height="425px"><h2>Main Menu</h2>
-                <hr>
-
-                <details>
-                    <summary><a href="student_dashboard.php">Dashboard</a></summary>
-                </details>
-
-                <details>
-                    <summary><a href="student_notification.php">Notify</a></summary>
-                </details>
-
-                <details>
-                    <summary><b>Grade Report</b></summary>
-                    <details>
-                        <summary><a href="student_grades.php">Grade Info</a></summary>
-                    </details>
-                </details>
-
-                <details>
-                    <summary><b>Portal</b></summary>
-                    <details>
-                        <summary><a href="view_student_profile.php">Student Info</a></summary>
-                    </details>
-                    <details>
-                        <summary><a href="student_attendance.php">Attendance</a></summary>
-                    </details>
-                    <details>
-                        <summary><a href="student_classroom.php">Classroom</a></summary>
-                    </details>
-                </details>
-
-                <details>
-                    <summary><b>Setting</b></summary>
-                    <details>
-                        <summary><a href="../../controllers/students/view_student_profile_controller.php">View Profile</a></summary>
-                    </details>
-                    <details>
-                        <summary><a href="../../controllers/students/view_student_profile_controller.php">Edit Profile</a></summary>
-                    </details>
-                    <details>
-                        <summary><a href="change_student_password.php">Change Password</a></summary>
-                    </details>
-                    <details>
-                        <summary><a href="../../controllers/logout_check.php">Logout</a></summary>
-                    </details>
-                </details>
-            </td>
+            <?php
+                require_once('../navigator/sideBar.html');
+            ?>
 
             <!-- ==================================================================================================-->
             <td align="center">
@@ -144,27 +100,27 @@ include('../header.html');
                                             <form method="post" action="student_profile_pic.php" enctype="multipart/form-data">
                                                 <td rowspan="4" align="center">
                                                     <?php
-                                                    //require_once('../model/db.php');
-                                                    require_once('../../models/imageModel.php');
+                                                        //require_once('../model/db.php');
+                                                        require_once('../../models/imageModel.php');
 
-                                                    /*$conn = getConnection();
-                                                    $sql = "select * from user_image where user";
-                                                    $result = mysqli_query($conn, $sql);
-                                                    $row = mysqli_fetch_assoc($result);*/
+                                                        /*$conn = getConnection();
+                                                        $sql = "select * from user_image where user";
+                                                        $result = mysqli_query($conn, $sql);
+                                                        $row = mysqli_fetch_assoc($result);*/
 
-                                                    $result = getImageById($username);
-                                                    $row = mysqli_fetch_assoc($result);
-//                                                    var_dump($row);
+                                                        $result = getImageById($username);
+                                                        $row = mysqli_fetch_assoc($result);
+    //                                                    var_dump($row);
 
-                                                    if($row['image'] != ""){
-                                                        ?>
-                                                            <img src="<?php echo "{$row['image']}"; ?>" width="200px" height="200px"><br>
-                                                        <?php
-                                                    }else{
-                                                        ?>
-                                                            <img src="../../asset/user.png" width="100px" height="100px"><br>
-                                                        <?php
-                                                    }
+                                                        if($row['image'] != ""){
+                                                            ?>
+                                                                <img src="<?php echo "{$row['image']}"; ?>" width="200px" height="200px"><br>
+                                                            <?php
+                                                        }else{
+                                                            ?>
+                                                                <img src="../../asset/user.png" width="100px" height="100px"><br>
+                                                            <?php
+                                                        }
                                                     ?>
                                                     <a href="student_profile_pic.php">Change</a>
                                                 </td>

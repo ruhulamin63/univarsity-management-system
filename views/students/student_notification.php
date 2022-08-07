@@ -43,59 +43,10 @@ if(!isset($_SESSION['flag'])){
     <!-- new table creating -->
 <table  border="1px" align="cen" width="100%">
     <tr>
-        <td width="200px" height="425px"><h2>Main Menu</h2>
-            <hr>
 
-            <details>
-                <summary><b>Dashboard</b></summary>
-                <details>
-                    <summary><a href="student_dashboard.php">Dashboard</a></summary>
-                </details>
-            </details>
-
-            <details>
-                <summary><b>Notification</b></summary>
-                <details>
-                    <summary><a href="student_notification.php">Notify</a></summary>
-                </details>
-            </details>
-
-            <details>
-                <summary><b>Grade Report</b></summary>
-                <details>
-                    <summary><a href="student_grades.php">Grade Info</a></summary>
-                </details>
-            </details>
-
-            <details>
-                <summary><b>Portal</b></summary>
-                <details>
-                    <summary><a href="view_student_profile.php">Student Info</a></summary>
-                </details>
-                <details>
-                    <summary><a href="student_attendance.php">Attendance</a></summary>
-                </details>
-                <details>
-                    <summary><a href="student_classroom.php">Classroom</a></summary>
-                </details>
-            </details>
-
-            <details>
-                <summary><b>Setting</b></summary>
-                <details>
-                    <summary><a href="../../controllers/students/view_student_profile_controller.php">View Profile</a></summary>
-                </details>
-                <details>
-                    <summary><a href="../../controllers/students/view_student_profile_controller.php">Edit Profile</a></summary>
-                </details>
-                <details>
-                    <summary><a href="change_student_password.php">Change Password</a></summary>
-                </details>
-                <details>
-                    <summary><a href="../../controllers/logout_check.php">Logout</a></summary>
-                </details>
-            </details>
-        </td>
+        <?php
+            require_once('../navigator/sideBar.html');
+        ?>
 
         <td colspan="2" align="center">
             <table border="1px" align="center">
@@ -109,6 +60,7 @@ if(!isset($_SESSION['flag'])){
                     <th>Description</th>
                     <th>Time</th>
                     <th>Date</th>
+                    <th>Teacher Name</th>
                 </tr>
 
                 <?php
@@ -124,6 +76,13 @@ if(!isset($_SESSION['flag'])){
                                         <td>{$value['notice_desc']}</td>
                                         <td>{$value['time']}</td>
                                         <td>{$value['date']}</td>
+                              
+                                ";
+
+                                $teacher_info = getTeacherName($value['teacher_id']);
+        //                        var_dump($teacher_info);
+                                echo "
+                                        <td>{$teacher_info['full_name']}</td>
                                     </tr>
                                 ";
                     }

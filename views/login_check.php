@@ -95,7 +95,7 @@
                                                     <hr><br>
                                                     <input type="submit" name="submit" id="submit" value="Sing In" onclick="loginCheckValidation()"><br><br>
 
-                                                    <a href="forgot_pass_check.php">Forgot Password ?</a><br><br>
+                                                    <a href="forgot_password.html">Forgot Password ?</a><br><br>
                                                     <a href="regCheck.php">Create an account ?</a>
                                                 </td>
                                             </tr>
@@ -108,5 +108,5 @@
                 </tr>
 
 <?php
-include('../views/footer.html');
+    include('../views/footer.html');
 ?>

@@ -18,4 +18,19 @@
         return $users;
     }
 
+//======================================================================================
+
+    function getTeacherName($teacherId){
+
+        $conn = getConnection();
+        $sql = "select * from teachers where id=$teacherId";
+        $result = mysqli_query($conn, $sql);
+
+//        $users =[];
+//
+//        while($row = mysqli_fetch_assoc($result)){
+//            array_push($users, $row);
+//        }
+        return mysqli_fetch_assoc($result);
+    }
 ?>

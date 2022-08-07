@@ -1,55 +1,55 @@
 <?php
 
-session_start();
-require_once('../../models/UserModel.php');
-//require_once('../../models/db.php');
+    session_start();
+    require_once('../../models/UserModel.php');
+    //require_once('../../models/db.php');
 
-if(!isset($_SESSION['flag'])){
-    header('location: ../../controllers/login_check.php');
-}
-
-//=============================================================================
-
-$user=$_SESSION['current_user'];
-//print_r($user);
-
-if(isset($_POST['change_pass_btn'])){
-
-    $curr_pass = $_POST['curr_pass'];
-    $new_pass = $_POST['new_pass'];
-    $re_pass = $_POST['re_pass'];
-
-//=========================================================================================
-
-    if($user['password']==$curr_pass){
-        if($new_pass==$re_pass){
-
-            $conn=getConnection();
-            $sql="update users set password='{$new_pass}' where username='{$user['username']}'";
-            $result=mysqli_query($conn, $sql);
-
-            if($result){
-                ?>
-                <script type="text/javascript">
-                    alert('Successfully change password');
-                </script>
-                <?php
-            }else{
-                ?>
-                <script type="text/javascript">
-                    alert('Invalid change password');
-                </script>
-                <?php
-            }
-        }
-    }else{
-        ?>
-        <script type="text/javascript">
-            alert('Current password mismatch !');
-        </script>
-        <?php
+    if(!isset($_SESSION['flag'])){
+        header('location: ../../controllers/login_check.php');
     }
-}
+
+    //=============================================================================
+
+    $user=$_SESSION['current_user'];
+    //print_r($user);
+
+    if(isset($_POST['change_pass_btn'])){
+
+        $curr_pass = $_POST['curr_pass'];
+        $new_pass = $_POST['new_pass'];
+        $re_pass = $_POST['re_pass'];
+
+    //=========================================================================================
+
+        if($user['password']==$curr_pass){
+            if($new_pass==$re_pass){
+
+                $conn=getConnection();
+                $sql="update users set password='{$new_pass}' where username='{$user['username']}'";
+                $result=mysqli_query($conn, $sql);
+
+                if($result){
+                    ?>
+                    <script type="text/javascript">
+                        alert('Successfully change password');
+                    </script>
+                    <?php
+                }else{
+                    ?>
+                    <script type="text/javascript">
+                        alert('Invalid change password');
+                    </script>
+                    <?php
+                }
+            }
+        }else{
+            ?>
+            <script type="text/javascript">
+                alert('Current password mismatch !');
+            </script>
+            <?php
+        }
+    }
 ?>
 
     <!-- ======================================================== -->
@@ -90,77 +90,10 @@ include('../staffs/staff_head.html');
 
     <table  border="1px" align="center" width="100%">
         <tr>
-            <td width="200px" height="425px"><h2>Main Menu</h2>
-                <hr>
 
-                <details>
-                    <summary><a href="staff_dashboard.php">Dashboard</a></summary>
-                </details>
-
-                <!--                <details>-->
-                <!--                    <summary><b>Portal</b></summary>-->
-                <!--                    <details>-->
-                <!--                        <summary><a href="../view/create_leave_request.php">Create Leave Request</a></summary>-->
-                <!--                    </details>-->
-                <!--                    <details>-->
-                <!--                        <summary><a href="../view/create_travel_request.php">Create Travel Request</a></summary>-->
-                <!--                    </details>-->
-                <!--                    <details>-->
-                <!--                        <summary><a href="../view/fixing_interview_approval.php">Fixing Interview</a></summary>-->
-                <!--                    </details>-->
-                <!--                </details>-->
-                <!---->
-                <!--                <details>-->
-                <!--                    <summary><b>Screening & Approval</b></summary>-->
-                <!--                    <details>-->
-                <!--                        <summary><a href="../view/leave_approval.php">Leave Approval</a></summary>-->
-                <!--                    </details>-->
-                <!--                    <details>-->
-                <!--                        <summary><a href="../view/travel_approval.php">Travel Approval</a></summary>-->
-                <!--                    </details>-->
-                <!--                    <details>-->
-                <!--                        <summary><a href="../view/performance_approval.php">Performance Overview</a></summary>-->
-                <!--                    </details>-->
-                <!--                </details>-->
-                <!---->
-                <!--                <details>-->
-                <!--                    <summary><b>Requirement</b></summary>-->
-                <!--                    <details>-->
-                <!--                        <summary><a href="../view/add_job.php">Add Job Titles</a></summary>-->
-                <!--                    </details>-->
-                <!--                    <details>-->
-                <!--                        <summary><a href="../view/view_job.php">View Job Titles</a></summary>-->
-                <!--                    </details>-->
-                <!--                    <details>-->
-                <!--                        <summary><a href="../view/add_job_vacancy.php">Add Job Vacancy</a></summary>-->
-                <!--                    </details>-->
-                <!--                    <details>-->
-                <!--                        <summary><a href="../view/view_job_vacancy.php">View Job Vacancy</a></summary>-->
-                <!--                    </details>-->
-                <!--                    <details>-->
-                <!--                        <summary><a href="../view/online_app.php">Online Application</a></summary>-->
-                <!--                    </details>-->
-                <!--                    <details>-->
-                <!--                        <summary><a href="../view/fixing_interview.php">Fixing Interview Online</a></summary>-->
-                <!--                    </details>-->
-                <!--                </details>-->
-
-                <details>
-                    <summary><b>Setting</b></summary>
-                    <details>
-                        <summary><a href="view_staff_profile.php">View Profile</a></summary>
-                    </details>
-                    <details>
-                        <summary><a href="edit_student_profile.php">Edit Profile</a></summary>
-                    </details>
-                    <details>
-                        <summary><a href="change_staff_password.php">Change Password</a></summary>
-                    </details>
-                    <details>
-                        <summary><a href="../../controllers/logout_check.php">Logout</a></summary>
-                    </details>
-                </details>
-            </td>
+            <?php
+                require_once('../navigator/staff_side_bar.html');
+            ?>
 
             <td>
                 <table align="center">
