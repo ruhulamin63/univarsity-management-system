@@ -12,8 +12,8 @@
     <!-- ============================================================ -->
 
 <?php
-$title= "Dashboard";
-include('staff_head.html');
+    $title= "Dashboard";
+    include('staff_head.html');
 ?>
     </head>
     <body>

@@ -43,53 +43,10 @@
     <!-- new table creating -->
 <table  border="1px" align="cen" width="100%">
     <tr>
-        <td width="200px" height="425px"><h2>Main Menu</h2>
-            <hr>
 
-            <details>
-                <summary><a href="student_dashboard.php">Dashboard</a></summary>
-            </details>
-
-            <details>
-                <summary><a href="student_notification.php">Notify</a></summary>
-            </details>
-
-            <details>
-                <summary><b>Grade Report</b></summary>
-                <details>
-                    <summary><a href="student_grades.php">Grade Info</a></summary>
-                </details>
-            </details>
-
-            <details>
-                <summary><b>Portal</b></summary>
-                <details>
-                    <summary><a href="view_student_profile.php">Student Info</a></summary>
-                </details>
-                <details>
-                    <summary><a href="student_attendance.php">Attendance</a></summary>
-                </details>
-                <details>
-                    <summary><a href="student_classroom.php">Classroom</a></summary>
-                </details>
-            </details>
-
-            <details>
-                <summary><b>Setting</b></summary>
-                <details>
-                    <summary><a href="../../controllers/students/view_student_profile_controller.php">View Profile</a></summary>
-                </details>
-                <details>
-                    <summary><a href="../../controllers/students/view_student_profile_controller.php">Edit Profile</a></summary>
-                </details>
-                <details>
-                    <summary><a href="change_student_password.php">Change Password</a></summary>
-                </details>
-                <details>
-                    <summary><a href="../../controllers/logout_check.php">Logout</a></summary>
-                </details>
-            </details>
-        </td>
+        <?php
+            require_once('../navigator/sideBar.php');
+        ?>
 
         <td colspan="2" align="center">
             <table border="1px" align="center">
@@ -101,6 +58,7 @@
                 <tr>
                     <th>Date</th>
                     <th>Status</th>
+                    <th>Student Name</th>
                 </tr>
 
                 <?php
@@ -108,10 +66,12 @@
 
                 $result = getStudentInfo($_SESSION['current_user']['id']);
 //                print_r($result);
-                foreach ($result as $key => $value) {
-                    $student_id = getStudentAttendance($value['id']);
-                }
-//                print_r($student_id);
+
+//                foreach ($result as $key => $value) {
+//                    $student_id = getStudentAttendance($value['id']);
+//                }
+
+                $student_id = getStudentAttendance();
 
                 if(count($student_id)>0){
                     foreach ($student_id as $key => $value) {
@@ -119,8 +79,13 @@
                                         <tr>
                                             <td>{$value['date']}</td>
                                             <td>{$value['status']}</td>
-                                        </tr>
                                     ";
+
+                        $student_name = getStudentName($value['student_id']);
+                        echo "
+                                        <td>{$student_name['student_name']}</td>
+                                    </tr>
+                                ";
                     }
                 }
                 ?>

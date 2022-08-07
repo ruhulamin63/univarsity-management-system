@@ -43,53 +43,10 @@ if(!isset($_SESSION['flag'])){
     <!-- new table creating -->
 <table  border="1px" align="cen" width="100%">
     <tr>
-        <td width="200px" height="425px"><h2>Main Menu</h2>
-            <hr>
 
-            <details>
-                <summary><a href="student_dashboard.php">Dashboard</a></summary>
-            </details>
-
-            <details>
-                <summary><a href="student_notification.php">Notify</a></summary>
-            </details>
-
-            <details>
-                <summary><b>Grade Report</b></summary>
-                <details>
-                    <summary><a href="student_grades.php">Grade Info</a></summary>
-                </details>
-            </details>
-
-            <details>
-                <summary><b>Portal</b></summary>
-                <details>
-                    <summary><a href="view_student_profile.php">Student Info</a></summary>
-                </details>
-                <details>
-                    <summary><a href="student_attendance.php">Attendance</a></summary>
-                </details>
-                <details>
-                    <summary><a href="student_classroom.php">Classroom</a></summary>
-                </details>
-            </details>
-
-            <details>
-                <summary><b>Setting</b></summary>
-                <details>
-                    <summary><a href="../../controllers/students/view_student_profile_controller.php">View Profile</a></summary>
-                </details>
-                <details>
-                    <summary><a href="../../controllers/students/view_student_profile_controller.php">Edit Profile</a></summary>
-                </details>
-                <details>
-                    <summary><a href="change_student_password.php">Change Password</a></summary>
-                </details>
-                <details>
-                    <summary><a href="../../controllers/logout_check.php">Logout</a></summary>
-                </details>
-            </details>
-        </td>
+        <?php
+            require_once('../navigator/sideBar.php');
+        ?>
 
         <td colspan="2" align="center">
             <table border="1px" align="center">
@@ -102,16 +59,20 @@ if(!isset($_SESSION['flag'])){
                     <th>Year</th>
                     <th>Section</th>
                     <th>Status</th>
+                    <th>Student</th>
                 </tr>
 
                 <?php
                 require_once('../../models/studentInfoModel.php');
 
-                $teacher_id = getTeacherInfo(2);
+                $get_all_classroom_data = getAllClassroomInfo();
+//                var_dump($get_all_classroom_data);
 
-                foreach ($teacher_id as $key => $value) {
-                    $classroom_id = getStudentClassroom($value['id']);
-                }
+                   foreach ($get_all_classroom_data as $value) {
+                       $teacher_id = getTeacherInfo($value['teacher_id']);
+                       $classroom_id = getStudentClassroom($teacher_id['id']);
+                       $student_id = getStudentData($value['student_id']);
+                   }
 
                 if(count($classroom_id)>0){
                     foreach ($classroom_id as $key => $value) {
@@ -120,8 +81,12 @@ if(!isset($_SESSION['flag'])){
                                         <td>{$value['year']}</td>
                                         <td>{$value['section']}</td>
                                         <td>{$value['status']}</td>
-                                    </tr>
+                    
                                 ";
+                        echo "
+                                <td>{$student_id['student_name']}</td>
+                            </tr>
+                        ";
                     }
                 }
                 ?>
