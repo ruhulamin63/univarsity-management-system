@@ -83,78 +83,10 @@
 
         <table border="1px" align="center" width="100%">
             <tr height="420px">
-                <td width="200px" height="425px">
-                    <h2>Main Menu</h2>
-                    <hr>
 
-                    <details>
-                        <summary><a href="staff_dashboard.php">Dashboard</a></summary>
-                    </details>
-
-                    <!--                <details>-->
-                    <!--                    <summary><b>Portal</b></summary>-->
-                    <!--                    <details>-->
-                    <!--                        <summary><a href="../view/create_leave_request.php">Create Leave Request</a></summary>-->
-                    <!--                    </details>-->
-                    <!--                    <details>-->
-                    <!--                        <summary><a href="../view/create_travel_request.php">Create Travel Request</a></summary>-->
-                    <!--                    </details>-->
-                    <!--                    <details>-->
-                    <!--                        <summary><a href="../view/fixing_interview_approval.php">Fixing Interview</a></summary>-->
-                    <!--                    </details>-->
-                    <!--                </details>-->
-                    <!---->
-                    <!--                <details>-->
-                    <!--                    <summary><b>Screening & Approval</b></summary>-->
-                    <!--                    <details>-->
-                    <!--                        <summary><a href="../view/leave_approval.php">Leave Approval</a></summary>-->
-                    <!--                    </details>-->
-                    <!--                    <details>-->
-                    <!--                        <summary><a href="../view/travel_approval.php">Travel Approval</a></summary>-->
-                    <!--                    </details>-->
-                    <!--                    <details>-->
-                    <!--                        <summary><a href="../view/performance_approval.php">Performance Overview</a></summary>-->
-                    <!--                    </details>-->
-                    <!--                </details>-->
-                    <!---->
-                    <!--                <details>-->
-                    <!--                    <summary><b>Requirement</b></summary>-->
-                    <!--                    <details>-->
-                    <!--                        <summary><a href="../view/add_job.php">Add Job Titles</a></summary>-->
-                    <!--                    </details>-->
-                    <!--                    <details>-->
-                    <!--                        <summary><a href="../view/view_job.php">View Job Titles</a></summary>-->
-                    <!--                    </details>-->
-                    <!--                    <details>-->
-                    <!--                        <summary><a href="../view/add_job_vacancy.php">Add Job Vacancy</a></summary>-->
-                    <!--                    </details>-->
-                    <!--                    <details>-->
-                    <!--                        <summary><a href="../view/view_job_vacancy.php">View Job Vacancy</a></summary>-->
-                    <!--                    </details>-->
-                    <!--                    <details>-->
-                    <!--                        <summary><a href="../view/online_app.php">Online Application</a></summary>-->
-                    <!--                    </details>-->
-                    <!--                    <details>-->
-                    <!--                        <summary><a href="../view/fixing_interview.php">Fixing Interview Online</a></summary>-->
-                    <!--                    </details>-->
-                    <!--                </details>-->
-
-                    <details>
-                        <summary><b>Setting</b></summary>
-                        <details>
-                            <summary><a href="view_staff_profile.php">View Profile</a></summary>
-                        </details>
-                        <details>
-                            <summary><a href="edit_staff_profile.php">Edit Profile</a></summary>
-                        </details>
-                        <details>
-                            <summary><a href="change_staff_password.php">Change Password</a></summary>
-                        </details>
-                        <details>
-                            <summary><a href="../../controllers/logout_check.php">Logout</a></summary>
-                        </details>
-                    </details>
-                </td>
+                <?php
+                    require_once('../navigator/staff_side_bar.html');
+                ?>
 
                 <!-- ================================================================================================= -->
 

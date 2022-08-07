@@ -93,7 +93,7 @@
         <tr>
 
             <?php
-                require_once('../navigator/sideBar.php');
+                require_once('../navigator/sideBar.html');
             ?>
 
             <td>

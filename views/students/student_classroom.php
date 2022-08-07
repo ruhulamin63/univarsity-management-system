@@ -45,7 +45,7 @@ if(!isset($_SESSION['flag'])){
     <tr>
 
         <?php
-            require_once('../navigator/sideBar.php');
+            require_once('../navigator/sideBar.html');
         ?>
 
         <td colspan="2" align="center">

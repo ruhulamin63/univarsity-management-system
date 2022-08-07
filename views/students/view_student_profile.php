@@ -69,7 +69,7 @@
     <table border="1px" align="center" width="100%">
         <tr>
             <?php
-                require_once('../navigator/sideBar.php');
+                require_once('../navigator/sideBar.html');
             ?>
 
             <!-- ==================================================================================================-->
@@ -100,27 +100,27 @@
                                             <form method="post" action="student_profile_pic.php" enctype="multipart/form-data">
                                                 <td rowspan="4" align="center">
                                                     <?php
-                                                    //require_once('../model/db.php');
-                                                    require_once('../../models/imageModel.php');
+                                                        //require_once('../model/db.php');
+                                                        require_once('../../models/imageModel.php');
 
-                                                    /*$conn = getConnection();
-                                                    $sql = "select * from user_image where user";
-                                                    $result = mysqli_query($conn, $sql);
-                                                    $row = mysqli_fetch_assoc($result);*/
+                                                        /*$conn = getConnection();
+                                                        $sql = "select * from user_image where user";
+                                                        $result = mysqli_query($conn, $sql);
+                                                        $row = mysqli_fetch_assoc($result);*/
 
-                                                    $result = getImageById($username);
-                                                    $row = mysqli_fetch_assoc($result);
-//                                                    var_dump($row);
+                                                        $result = getImageById($username);
+                                                        $row = mysqli_fetch_assoc($result);
+    //                                                    var_dump($row);
 
-                                                    if($row['image'] != ""){
-                                                        ?>
-                                                            <img src="<?php echo "{$row['image']}"; ?>" width="200px" height="200px"><br>
-                                                        <?php
-                                                    }else{
-                                                        ?>
-                                                            <img src="../../asset/user.png" width="100px" height="100px"><br>
-                                                        <?php
-                                                    }
+                                                        if($row['image'] != ""){
+                                                            ?>
+                                                                <img src="<?php echo "{$row['image']}"; ?>" width="200px" height="200px"><br>
+                                                            <?php
+                                                        }else{
+                                                            ?>
+                                                                <img src="../../asset/user.png" width="100px" height="100px"><br>
+                                                            <?php
+                                                        }
                                                     ?>
                                                     <a href="student_profile_pic.php">Change</a>
                                                 </td>

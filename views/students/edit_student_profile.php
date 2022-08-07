@@ -79,7 +79,7 @@
                 <tr height="420px">
 
                     <?php
-                        require_once('../navigator/sideBar.php');
+                        require_once('../navigator/sideBar.html');
                     ?>
 
                     <!-- ================================================================================================= -->
