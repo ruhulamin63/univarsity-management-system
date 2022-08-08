@@ -12,6 +12,8 @@ if(!isset($_SESSION['flag'])){
     $title= "Grade Report";
     include('student_head.html');
 ?>
+        <script type="text/javascript" src="../../js/student_grade_report.js"></script>
+        <script type="text/javascript" src="../../js/student_grade_search.js"></script>
     </head>
     <body>
 
@@ -52,6 +54,23 @@ if(!isset($_SESSION['flag'])){
                 <tr>
                     <td align="center" colspan="11">
                         <h2>Grade Report's</h2>
+
+                            <hr><br>
+                            <b>Search Grade</b>
+                            <span>
+									<input type="text" id="name" name="name" placeholder="subject name" value="">
+								</span>
+                            <span>
+
+									<input type="submit" name="search_btn" value="Search" onclick="SearchJobVacancy(this.value)">
+									<input type="submit" name="view_all_vacancy_btn" value="View All" onclick="showAllJObVacancy(this.value)">
+								</span>
+
+
+                        <br>
+                        <div id="txtHint">
+
+                        </div>
                     </td>
                 </tr>
                 <tr>

@@ -12,6 +12,8 @@ if(!isset($_SESSION['flag'])){
     $title= "Notification";
     include('student_head.html');
 ?>
+    <script type="text/javascript" src="../../js/student_notify_search.js"></script>
+
     </head>
     <body>
 
@@ -49,6 +51,7 @@ if(!isset($_SESSION['flag'])){
         ?>
 
         <td colspan="2" align="center">
+
             <table border="1px" align="center">
                 <tr>
                     <td align="center" colspan="11">

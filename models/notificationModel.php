@@ -33,4 +33,21 @@
 //        }
         return mysqli_fetch_assoc($result);
     }
+
+//======================================================================================
+
+    function getAllTeacherName($teacher_name){
+
+        $conn = getConnection();
+        $sql = "select * from teachers where full_name like '%{$teacher_name}%'";
+        $result = mysqli_query($conn, $sql);
+
+    //        $users =[];
+    //
+    //        while($row = mysqli_fetch_assoc($result)){
+    //            array_push($users, $row);
+    //        }
+        return mysqli_fetch_assoc($result);
+    }
+
 ?>
