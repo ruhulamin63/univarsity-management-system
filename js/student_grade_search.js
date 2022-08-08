@@ -1,10 +1,10 @@
 
-    function SearchJobVacancy() {
+    function SearchGradeReport() {
 
         var name = document.getElementById('name').value;
 
         var xhttp = new XMLHttpRequest();
-        xhttp.open("POST", "../controllers/students/getGradeSearch.php", true);
+        xhttp.open("POST", "../views/students/getGradeSearch.php", true);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp.send('name='+name);
 

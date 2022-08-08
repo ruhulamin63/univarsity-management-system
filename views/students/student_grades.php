@@ -12,8 +12,45 @@ if(!isset($_SESSION['flag'])){
     $title= "Grade Report";
     include('student_head.html');
 ?>
-        <script type="text/javascript" src="../../js/student_grade_report.js"></script>
-        <script type="text/javascript" src="../../js/student_grade_search.js"></script>
+<!--        <script type="text/javascript" src="../../js/student_grade_report.js"></script>-->
+<!--        <script type="text/javascript" src="../../js/student_grade_search.js"></script>-->
+
+        <script>
+            function SearchGradeReport() {
+
+                var name = document.getElementById('name').value;
+
+                var xhttp = new XMLHttpRequest();
+                xhttp.open("POST", "getGradeSearch.php", true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send('name='+name);
+
+                xhttp.onreadystatechange = function() {
+
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("txtHint").innerHTML = this.responseText;
+                    }
+                }
+            }
+        </script>
+        <script>
+            function showAllGrade(){
+
+                const xhttp = new XMLHttpRequest();
+
+                xhttp.open('POST', 'getGrade.php', true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send();
+
+                xhttp.onreadystatechange = function(){
+                    if(this.readyState == 4 && this.status == 200){
+
+                        document.getElementById('txtHint').innerHTML = this.responseText;
+                    }
+                }
+            }
+        </script>
+
     </head>
     <body>
 
@@ -50,56 +87,28 @@ if(!isset($_SESSION['flag'])){
         ?>
 
         <td colspan="2" align="center">
-            <table border="1px" align="center">
+            <table align="center">
                 <tr>
-                    <td align="center" colspan="11">
-                        <h2>Grade Report's</h2>
-
+                    <td>
+                        <fieldset>
+                            <h2>Grade Report's</h2>
                             <hr><br>
                             <b>Search Grade</b>
                             <span>
-									<input type="text" id="name" name="name" placeholder="subject name" value="">
-								</span>
+                                    <input type="text" id="name" name="name" placeholder="subject name" value="">
+                                </span>
                             <span>
-
-									<input type="submit" name="search_btn" value="Search" onclick="SearchJobVacancy(this.value)">
-									<input type="submit" name="view_all_vacancy_btn" value="View All" onclick="showAllJObVacancy(this.value)">
-								</span>
-
-
-                        <br>
-                        <div id="txtHint">
-
-                        </div>
+                                <input type="submit" name="search_btn" value="Search" onclick="SearchGradeReport(this.value)">
+                                <input type="submit" name="view_all_grade_btn" value="View All" onclick="showAllGrade(this.value)">
+                            </span>
+                        </fieldset>
                     </td>
                 </tr>
-                <tr>
-                    <th>Subject Name</th>
-                    <th>Marks</th>
-                </tr>
-
-                <?php
-                require_once('../../models/studentInfoModel.php');
-
-                $grade_id = getGradeInfo(1);
-
-//                foreach ($grade_id as $key => $value) {
-//                    $classroom_id = getStudentClassroom($value['id']);
-//                }
-
-                if(count($grade_id)>0){
-                    foreach ($grade_id as $key => $value) {
-                        echo "
-                                    <tr>
-                                        <td>{$value['name']}</td>
-                                        <td>{$value['marks']}</td>
-                                    </tr>
-                                ";
-                    }
-                }
-                ?>
 
             </table>
+
+            <br>
+            <div id="txtHint"></div>
         </td>
     </tr>
 <?php

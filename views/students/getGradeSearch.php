@@ -1,6 +1,6 @@
 
 <?php
-    require_once('../../models/studentInfoModel.php');
+    require_once('../../models/gradeSearchModel.php');
     //require_once('../model/db.php');
 
     /*$conn = getConnection();
@@ -14,8 +14,9 @@
                         </tr>";
 
     $name=$_POST['name'];
+//    var_dump($name);
     $result=getStudentGradeSearchById($name);
-    var_dump();
+//    var_dump($result);
 
     if(mysqli_num_rows($result)>0){
         while($row=mysqli_fetch_array($result)){
