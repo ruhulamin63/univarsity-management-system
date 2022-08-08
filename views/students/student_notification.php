@@ -1,17 +1,17 @@
 <?php
-session_start();
+        session_start();
 
-if(!isset($_SESSION['flag'])){
-    header('location: ../../controllers/login_check.php');
-}
-?>
+        if(!isset($_SESSION['flag'])){
+            header('location: ../../controllers/login_check.php');
+        }
+    ?>
 
-    <!-- ================================================================ -->
+        <!-- ================================================================ -->
 
-<?php
-    $title= "Notification";
-    include('student_head.html');
-?>
+    <?php
+        $title= "Notification";
+        include('student_head.html');
+    ?>
     <script type="text/javascript" src="../../js/student_notify_search.js"></script>
 
     </head>
@@ -26,7 +26,7 @@ if(!isset($_SESSION['flag'])){
                             <img src="../../asset/company_logo.png" alt="main_logo" width="100%" height="100%">
                         </td>
                         <td align="right" >Logged in as
-                            <a href="../../controllers/students/view_student_profile_controller.php">
+                            <a href="view_student_profile.php">
                                 <?php
                                     require_once('../../models/UserModel.php');
                                     $id=$_SESSION['current_user']['username'];

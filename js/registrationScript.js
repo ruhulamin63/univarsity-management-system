@@ -20,7 +20,7 @@ function regCheckValidation(){
 //     console.log(user_id);
 
     if(username==''){
-        document.getElementById('un').innerHTML = "* Please required user id ?";
+        document.getElementById('un').innerHTML = "* Please required username ?";
     }
     // else if(isNaN(username)){
     //     document.getElementById('un').innerHTML = "* Must be integer type ?";
@@ -130,7 +130,7 @@ function regCheckValidation(){
     //     document.getElementById('ut').innerHTML="";
     // }
 
-//===================================================================================================
+//=====================================ajax server data through==============================================================
 
     const xhttp = new XMLHttpRequest();
 
